@@ -6,34 +6,40 @@ import java.util.Set;
 import com.petstore.model.bo.Product;
 
 /**
+ * Bean class for the category
  * @author analian
  *
  */
 public class CategoryBean implements Serializable 
 {
 	/**
-	 * 
+	 * serializable uid - auto generated.
 	 */
 	private static final long serialVersionUID = 7613789070799055414L;
 	
 	/**
-	 * 
+	 * id for the category.
 	 */
 	private int id;
+	
 	/**
-	 * 
+	 *  Name of the Category
 	 */
 	private String categoryName;
+	
 	/**
-	 * 
+	 * Description of the category
 	 */
 	private String description;
+	
 	/**
-	 * 
+	 * Set of Products associated with the category.
 	 */
 	Set<Product> products;
 	
 	/**
+	 * Constructor
+	 * 
 	 * @param categoryName
 	 * @param description
 	 */
@@ -44,6 +50,7 @@ public class CategoryBean implements Serializable
 	}
 	
 	/**
+	 * Getter
 	 * @return the categoryName
 	 */
 	public String getCategoryName() 
@@ -51,6 +58,7 @@ public class CategoryBean implements Serializable
 		return categoryName;
 	}
 	/**
+	 * Setter
 	 * @param categoryName the categoryName to set
 	 */
 	public void setCategoryName(String categoryName) 
@@ -58,6 +66,8 @@ public class CategoryBean implements Serializable
 		this.categoryName = categoryName;
 	}
 	/**
+	 * Getter
+	 * 
 	 * @return the serialversionuid
 	 */
 	public static long getSerialversionuid() 
@@ -65,6 +75,8 @@ public class CategoryBean implements Serializable
 		return serialVersionUID;
 	}
 	/**
+	 * Setter
+	 * 
 	 * @param description
 	 */
 	public void setDescription(String description) 
@@ -72,7 +84,9 @@ public class CategoryBean implements Serializable
 		this.description = description;
 	}
 	/**
-	 * @return
+	 * Getter
+	 * 
+	 * @return this.description
 	 */
 	public String getDescription() 
 	{
@@ -80,6 +94,8 @@ public class CategoryBean implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the id
 	 */
 	public int getId() 
@@ -88,6 +104,8 @@ public class CategoryBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param id the id to set
 	 */
 	public void setId(int id) 
@@ -96,6 +114,8 @@ public class CategoryBean implements Serializable
 	}
 
 	/**
+	 * Getter for the set of products.
+	 * 
 	 * @return the products
 	 */
 	public Set<Product> getProducts() 
@@ -104,6 +124,8 @@ public class CategoryBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param products the products to set
 	 */
 	public void setProducts(Set<Product> products) 

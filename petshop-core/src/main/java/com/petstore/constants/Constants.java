@@ -4,10 +4,14 @@ package com.petstore.constants;
  */
 
 /**
+ * Class that contains all the string constants
+ * To be used throughout the application.
+ * 
  * @author analian
  *
  */
-public class Constants {
+public class Constants 
+{
 
 	public static final String ADMIN = "admin";
 	public static final String ANON = "anonymous";
@@ -16,6 +20,8 @@ public class Constants {
 	public static final String USERNAME = "username";
 	public static final String PASSWORD = "password";
 	public static final String EMAIL_ID = "email";
+	
+	public static final String USER_ID = "user_id";
 	
 	public static final String INVALID_LOGIN_MESSAGE = "Invalid Login!";
 	public static final String TRY_AGAIN_MESSAGE = "Please Try Again!";

@@ -11,57 +11,80 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 
+import org.apache.log4j.Logger;
+
 import com.petstore.model.bo.Product;
 import com.petstore.model.bo.ProductCategory;
 import com.petstore.service.CategoryService;
 import com.petstore.service.ProductService;
 
+/**
+ * Main managed bean
+ * for the products page of
+ * the admin module
+ * 
+ * @author analian
+ *
+ */
 @ManagedBean(name = "item")
 @RequestScoped
 public class ProductItem implements Serializable 
 {
+	
+	static final Logger log = Logger.getLogger(ProductItem.class);
+	
+	/**
+	 * Injected service class
+	 * handling the actions related to 
+	 * products with the DAO
+	 */
 	@Inject
 	ProductService productService;
 	
+	/**
+	 * Injected Service class
+	 * handling the actions related to
+	 * Products and their Categories.
+	 */
 	@Inject
 	CategoryService categoryService;
 
 
 	/**
-	 * 
+	 * auto generated for Serializable class.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 
+	 * item name of the product.
 	 */
 	private String item;
 	/**
-	 * 
+	 * description of each product.
 	 */
 	private String description;
 	/**
-	 * 
+	 * price of each product.
 	 */
 	private Double price;
 	/**
-	 * 
+	 * category to which the product belongs.
 	 */
 	private String category;
 
 	/**
-	 * 
+	 * Map of categories from DB
+	 * maps to the dropdown for adding the product.
 	 */
 	private Map<Integer, String> categories;
 
 	/**
-	 * 
+	 * List of products shown on the page
+	 * as an editable grid datatable.
 	 */
 	private ArrayList<ProductBean> productList = new ArrayList<ProductBean>();
 
-
-	
 	/**
-	 * 
+	 * init method 
 	 */
 	@PostConstruct
 	public void init() 
@@ -76,7 +99,9 @@ public class ProductItem implements Serializable
 	}
 
 	/**
-	 * 
+	 * method called to 
+	 * refresh the list of products on the datatable
+	 * and show to the user correct list.
 	 */
 	public void refreshProductList() 
 	{
@@ -97,14 +122,18 @@ public class ProductItem implements Serializable
 	}
 
 	/**
-	 * 
+	 * method called on changing the category.
+	 * Doesn't do anything, just logs that 
+	 * category has been changed.
 	 */
 	public void onCategoryChange() 
 	{
-		System.out.println(category);
+		log.debug("category changed to -->" + category);
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return
 	 */
 	public String getItem() 
@@ -113,6 +142,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param item
 	 */
 	public void setItem(String item) 
@@ -121,6 +152,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return
 	 */
 	public Double getPrice() 
@@ -129,6 +162,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param price
 	 */
 	public void setPrice(Double price) 
@@ -139,6 +174,8 @@ public class ProductItem implements Serializable
 	
 
 	/**
+	 * Getter
+	 * 
 	 * @return
 	 */
 	public ArrayList<ProductBean> getProductList() 
@@ -151,6 +188,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the category
 	 */
 	public String getCategory() 
@@ -159,6 +198,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param category
 	 *            the category to set
 	 */
@@ -168,6 +209,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the categories
 	 */
 	public Map<Integer, String> getCategories() 
@@ -183,6 +226,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param categories
 	 *            the categories to set
 	 */
@@ -192,6 +237,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the description
 	 */
 	public String getDescription() 
@@ -200,6 +247,8 @@ public class ProductItem implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param description
 	 *            the description to set
 	 */

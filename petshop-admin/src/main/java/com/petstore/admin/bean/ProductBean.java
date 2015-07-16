@@ -6,42 +6,48 @@ package com.petstore.admin.bean;
 import java.io.Serializable;
 
 /**
+ * Bean class as the backing bean
+ * for the products page of admin module
+ * 
  * @author analian
- *
  */
 public class ProductBean implements Serializable 
 {
-	 
     /**
-     * 
+     * Auto generated for serializable class
      */
     private static final long serialVersionUID = 1L;
     /**
-     * 
+     * Item name = product name.
      */
     private String item;
     /**
-     * 
+     * description of the product.
      */
     private String desc;
     /**
-     * 
+     * Price of each product.
      */
     private Double price;
 	/**
-	 * 
+	 * identifier for each product in DB.
 	 */
 	private int id;
 	/**
+	 * product_category Id
+	 * joins with product_Category to 
+	 * identify which category it belongs to
 	 * 
 	 */
 	private int pcId;
 	/**
-	 * 
+	 * stock keeping unit. (No particular use!) 
 	 */
 	private String sku;
  
     /**
+     * Constructor
+     * 
      * @param item
      * @param desc
      * @param price
@@ -54,6 +60,8 @@ public class ProductBean implements Serializable
     }    
  
     /**
+     * Getter
+     * 
      * @return
      */
     public String getItem() 
@@ -62,6 +70,8 @@ public class ProductBean implements Serializable
     }
  
     /**
+     * Setter
+     * 
      * @param item
      */
     public void setItem(String item) 
@@ -70,6 +80,8 @@ public class ProductBean implements Serializable
     }
  
     /**
+     * Getter
+     * 
      * @return
      */
     public Double getPrice() 
@@ -78,6 +90,8 @@ public class ProductBean implements Serializable
     }
  
     /**
+     * Setter
+     * 
      * @param price
      */
     public void setPrice(Double price) 
@@ -86,6 +100,8 @@ public class ProductBean implements Serializable
     }
  
 	/**
+	 * Getter
+	 * 
 	 * @return the desc
 	 */
 	public String getDesc() 
@@ -94,6 +110,8 @@ public class ProductBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param desc the desc to set
 	 */
 	public void setDesc(String desc) 
@@ -102,6 +120,8 @@ public class ProductBean implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the id
 	 */
 	public int getId() 
@@ -110,6 +130,8 @@ public class ProductBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param id the id to set
 	 */
 	public void setId(int id) 
@@ -118,6 +140,8 @@ public class ProductBean implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the serialversionuid
 	 */
 	public static long getSerialversionuid() 
@@ -126,6 +150,8 @@ public class ProductBean implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the pcId
 	 */
 	public int getPcId() 
@@ -134,6 +160,8 @@ public class ProductBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param pcId the pcId to set
 	 */
 	public void setPcId(int pcId) 
@@ -142,6 +170,8 @@ public class ProductBean implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the sku
 	 */
 	public String getSku() 
@@ -150,6 +180,8 @@ public class ProductBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param sku the sku to set
 	 */
 	public void setSku(String sku) 

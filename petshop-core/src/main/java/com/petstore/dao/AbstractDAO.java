@@ -8,6 +8,10 @@ import javax.persistence.PersistenceContextType;
 
 import com.petstore.dao.DAO;
 /**
+ * Abstract base DAO class
+ * Holds base methods required by all dao classes
+ * extending this base class.
+ * 
  * @author analian
  *
  * @param <K>
@@ -15,21 +19,52 @@ import com.petstore.dao.DAO;
  */
 public abstract class AbstractDAO<K, E> implements DAO<K, E> {
 
+	/**
+	 * The main persistence unit named admin
+	 * being used by JPA through EntityManager class.
+	 */
 	@PersistenceContext(name="admin",type=PersistenceContextType.EXTENDED)
 	protected EntityManager entityManager;
 	
-		protected Class<E> entityClass;
-	 
-	 
-		@SuppressWarnings("unchecked")
-		public AbstractDAO() {
-			ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
-			this.entityClass = (Class<E>) genericSuperclass.getActualTypeArguments()[1];
-		}
-	 
-		public void persist(E entity) { entityManager.persist(entity); }
-	 
-		public void remove(E entity) { entityManager.remove(entity); }
-	 
-		public E findById(K id) { return entityManager.find(entityClass, id); }
+	/**
+	 * The class being used by entity manager to persist/merge/remove
+	 */
+	protected Class<E> entityClass;
+ 
+ 
+	/**
+	 * Constructor
+	 */
+	@SuppressWarnings("unchecked")
+	public AbstractDAO() 
+	{
+		ParameterizedType genericSuperclass = 
+				(ParameterizedType) getClass().getGenericSuperclass();
+		this.entityClass = 
+				(Class<E>) genericSuperclass.getActualTypeArguments()[1];
+	}
+ 
+	/* (non-Javadoc)
+	 * @see com.petstore.dao.DAO#persist(java.lang.Object)
+	 */
+	public void persist(E entity) 
+	{ 
+		entityManager.persist(entity); 
+	}
+ 
+	/* (non-Javadoc)
+	 * @see com.petstore.dao.DAO#remove(java.lang.Object)
+	 */
+	public void remove(E entity)
+	{ 
+		entityManager.remove(entity); 
+	}
+ 
+	/* (non-Javadoc)
+	 * @see com.petstore.dao.DAO#findById(java.lang.Object)
+	 */
+	public E findById(K id)
+	{ 
+		return entityManager.find(entityClass, id); 
+	}
 }

@@ -17,6 +17,10 @@ import com.petstore.service.LoginService;
 import com.petstore.util.Util;
 
 /**
+ * Managed bean handling
+ * the user login for the admin
+ *  moodule
+ * 
  * @author analian
  *
  */
@@ -25,27 +29,37 @@ import com.petstore.util.Util;
 public class ManagedLoginBean implements Serializable 
 {
     /**
-     * 
+     * Injected Service class handling
+     * the login for the admin module.
+     * (Uses CDI)
      */
     @Inject 
     LoginService loginService;
     
 	/**
-	 * 
+	 * Auto generated UID for serializable class.
 	 */
 	private static final long serialVersionUID = 7829457603314371883L;
     /**
-     * 
+     * password for the admin user.
      */
     private String password;
     /**
-     * 
+     * Message for errors shown on screen
      */
-    private String message, uname;
+    private String message;
+    
+    /**
+     * Username for the admin user to login.
+     */
+    private String uname;
     
 
     /**
-     * @return
+     * Main method called for logging in 
+     * to the admin module
+     * 
+     * @return String path of the landing page.
      */
     public String loginProject()
     {
@@ -72,6 +86,8 @@ public class ManagedLoginBean implements Serializable
     }
 
 	/**
+	 * Getter
+	 * 
 	 * @return the password
 	 */
 	public String getPassword() 
@@ -80,6 +96,8 @@ public class ManagedLoginBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) 
@@ -88,6 +106,8 @@ public class ManagedLoginBean implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the message
 	 */
 	public String getMessage() 
@@ -96,6 +116,8 @@ public class ManagedLoginBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param message the message to set
 	 */
 	public void setMessage(String message) 
@@ -104,6 +126,8 @@ public class ManagedLoginBean implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the uname
 	 */
 	public String getUname() 
@@ -112,6 +136,8 @@ public class ManagedLoginBean implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param uname the uname to set
 	 */
 	public void setUname(String uname) 
@@ -120,6 +146,8 @@ public class ManagedLoginBean implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the serialversionuid
 	 */
 	public static long getSerialversionuid() 

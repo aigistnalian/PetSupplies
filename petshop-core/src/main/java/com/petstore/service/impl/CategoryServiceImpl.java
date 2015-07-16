@@ -16,14 +16,26 @@ import com.petstore.model.bo.ProductCategory;
 import com.petstore.service.CategoryService;
 
 /**
+ * Stateless class so that CDI can inject
+ * the service class in bean
+ * Acts as EJB Business layer
+ * 
  * @author analian
  *
  */
 @Stateless
-public class CategoryServiceImpl implements CategoryService {
+public class CategoryServiceImpl implements CategoryService 
+{
 
+	/**
+	 * Logger for the Category Service implementation class.
+	 */
 	final static Logger log = Logger.getLogger(CategoryServiceImpl.class);
 	
+	/**
+	 * Injected DAO class for the interactions with 
+	 * PRODUCT_CATEGORY tables
+	 */
 	@Inject
 	CategoryDAO categoryDAO;
 	
@@ -31,7 +43,8 @@ public class CategoryServiceImpl implements CategoryService {
 	 * @see com.petstore.service.CategoryService#addNewCategory(com.petstore.model.bo.ProductCategory)
 	 */
 	@Override
-	public void addNewCategory(ProductCategory category) {
+	public void addNewCategory(ProductCategory category)
+	{
 		log.info("Adding New Category -->" + category.getName());
 		categoryDAO.addNewCategory(category);
 	}
@@ -40,7 +53,8 @@ public class CategoryServiceImpl implements CategoryService {
 	 * @see com.petstore.service.CategoryService#findAllCategories()
 	 */
 	@Override
-	public List<ProductCategory> findAllCategories() {
+	public List<ProductCategory> findAllCategories() 
+	{
 		log.info("fetching all categories");
 		return categoryDAO.fetchAllCategories();
 	}
@@ -50,7 +64,8 @@ public class CategoryServiceImpl implements CategoryService {
 	 */
 	@Override
 	@Transactional
-	public void removeSelectedCategory(ProductCategory category) {
+	public void removeSelectedCategory(ProductCategory category) 
+	{
 		log.info("Removing Category -->" + category.getName());
 		categoryDAO.removeCategory(category);
 	}
@@ -60,7 +75,8 @@ public class CategoryServiceImpl implements CategoryService {
 	 */
 	@Override
 	@Transactional
-	public void updateSelectedCategory(ProductCategory category) {
+	public void updateSelectedCategory(ProductCategory category) 
+	{
 		log.info("Updating the Category -->" + category.getName());
 		categoryDAO.updateCategory(category);
 	}

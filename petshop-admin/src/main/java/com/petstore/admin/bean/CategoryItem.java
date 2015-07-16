@@ -13,6 +13,9 @@ import com.petstore.model.bo.ProductCategory;
 import com.petstore.service.CategoryService;
 
 /**
+ * Main managed bean handling the category page 
+ * for the pet supplies - admin 
+ * 
  * @author analian
  *
  */
@@ -21,32 +24,35 @@ import com.petstore.service.CategoryService;
 public class CategoryItem implements Serializable 
 {
 	/**
-	 * 
+	 * Injecting the Category Service class through
+	 * CDI
 	 */
 	@Inject
 	CategoryService categoryService;
 	
 	/**
-	 * 
+	 * Auto generated UID since it is serializable.
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * 
+	 * Name of the Category.
 	 */
 	private String categoryName;
 	/**
-	 * 
+	 * Description of the category.
 	 */
 	private String description;
 
 	/**
-	 * 
+	 * List of categories to be displayed on the screen
+	 * as a grid data table.
 	 */
 	private  ArrayList<CategoryBean> catList = new ArrayList<CategoryBean>();
 
 
 	/**
-	 * 
+	 * init method that refreshes the
+	 * categories 
 	 */
 	@PostConstruct
 	public void init() 
@@ -54,7 +60,10 @@ public class CategoryItem implements Serializable
 		this.refreshCategories();
 	}
 
-	/**
+	/*
+	 * private method handling
+	 * the refreshing of the category data
+	 * on the page.
 	 * 
 	 */
 	private void refreshCategories() 
@@ -77,6 +86,8 @@ public class CategoryItem implements Serializable
 
 
 	/**
+	 * Getter for the list of categories.
+	 * 
 	 * @return
 	 */
 	public ArrayList<CategoryBean> getCatList() 
@@ -85,6 +96,8 @@ public class CategoryItem implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the categoryName
 	 */
 	public String getCategoryName() 
@@ -93,6 +106,8 @@ public class CategoryItem implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param categoryName
 	 *            the categoryName to set
 	 */
@@ -102,6 +117,8 @@ public class CategoryItem implements Serializable
 	}
 
 	/**
+	 * Setter
+	 * 
 	 * @param description
 	 */
 	public void setDescription(String description) 
@@ -109,6 +126,8 @@ public class CategoryItem implements Serializable
 		this.description = description;
 	}
 	/**
+	 * Getter
+	 * 
 	 * @return
 	 */
 	public String getDescription() 
@@ -117,6 +136,8 @@ public class CategoryItem implements Serializable
 	}
 
 	/**
+	 * Getter
+	 * 
 	 * @return the serialversionuid
 	 */
 	public static long getSerialversionuid() 

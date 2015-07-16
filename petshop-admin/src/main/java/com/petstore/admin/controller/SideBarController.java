@@ -17,6 +17,9 @@ import com.petstore.constants.Constants;
 import com.petstore.util.Util;
 
 /**
+ * Managed Bean Class that handles the actions 
+ * of the links on the sidebar.
+ * 
  * @author analian
  *
  */
@@ -25,15 +28,18 @@ import com.petstore.util.Util;
 public class SideBarController implements Serializable 
 {
 	/**
-	 * 
+	 * Logger for the sidebar controller class.
 	 */
 	static final Logger log = Logger.getLogger(SideBarController.class);
+	
 	/**
-	 * 
+	 * auto generated for the serializable class.
 	 */
 	private static final long serialVersionUID = 8969017736390777114L;
 
 	/**
+	 * Method that redirects user to the category page 
+	 * 
 	 * @return
 	 */
 	public String sendToCategoryPage() 
@@ -51,8 +57,9 @@ public class SideBarController implements Serializable
 		}
 	}
 
-	/**
-	 * 
+	/*
+	 * Private method that shows a message 
+	 * when invalid link is clicked 
 	 */
 	private void showInvalidLinkClickedMessage() 
 	{
@@ -64,6 +71,9 @@ public class SideBarController implements Serializable
 	}
 	
 	 /**
+	  * user is logged out when the
+	  * logout link is clicked
+	  * 
 	 * @return
 	 */
 	public String logout() 
@@ -75,6 +85,9 @@ public class SideBarController implements Serializable
 	 }
 
 	/**
+	 * Method that redirects the user to 
+	 * the products page from the sidebar.
+	 * 
 	 * @return
 	 */
 	public String sendToProductPage() 

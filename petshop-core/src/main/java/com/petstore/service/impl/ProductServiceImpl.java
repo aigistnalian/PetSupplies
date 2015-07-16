@@ -16,14 +16,26 @@ import com.petstore.model.bo.Product;
 import com.petstore.service.ProductService;
 
 /**
+ * Stateless class so that CDI can inject
+ * the service class in bean
+ * Acts as EJB Business layer
+ * 
  * @author analian
  *
  */
 @Stateless
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService 
+{
 
+	/**
+	 * Logger for the Product Service implementation class.
+	 */
 	final static Logger log = Logger.getLogger(ProductServiceImpl.class);
 	
+	/**
+	 * Injected DAO class for interacting with 
+	 * PRODUCT table.
+	 */
 	@Inject
 	ProductDAO productDAO;
 	
@@ -31,7 +43,8 @@ public class ProductServiceImpl implements ProductService {
 	 * @see com.petstore.service.ProductService#fetchAllProductDetails()
 	 */
 	@Override
-	public List<Product> fetchAllProductDetails() {
+	public List<Product> fetchAllProductDetails() 
+	{
 		log.debug("Service class --> Fetching all product Details");
 		return productDAO.fetchProductDetails();
 	}
@@ -41,7 +54,8 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	@Transactional
-	public void addNewProduct(Product product) {
+	public void addNewProduct(Product product) 
+	{
 		log.debug("Service class --> Adding new product -->" + product);
 		productDAO.addNewProduct(product);
 	}
@@ -51,7 +65,8 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	@Transactional
-	public void updateProduct(Product product) {
+	public void updateProduct(Product product) 
+	{
 		log.debug("Service class --> Updating product -->" + product);
 		productDAO.updateProduct(product);
 	}
@@ -61,7 +76,8 @@ public class ProductServiceImpl implements ProductService {
 	 */
 	@Override
 	@Transactional
-	public void removeSelectedProduct(Product product) {
+	public void removeSelectedProduct(Product product) 
+	{
 		log.debug("Service class --> Removing selected product -->" + product);
 		productDAO.removeProduct(product);
 	}

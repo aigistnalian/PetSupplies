@@ -8,6 +8,14 @@ import org.primefaces.event.FileUploadEvent;
 
 import com.petstore.admin.bean.ProductItem;
 
+/**
+ * Deprecated class
+ * File upload TBD
+ * 
+ * @author analian
+ *
+ */
+@Deprecated
 public class FileUploadController implements Serializable
 {
 	@ManagedProperty(value="#{item}")
