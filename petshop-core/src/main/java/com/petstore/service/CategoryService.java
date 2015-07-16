@@ -11,7 +11,7 @@ import com.petstore.model.bo.ProductCategory;
  * @author analian
  *
  */
-public interface CategoryService 
+ public interface CategoryService 
 {
 
 	/**
@@ -19,20 +19,20 @@ public interface CategoryService
 	 * 
 	 * @param category
 	 */
-	public void addNewCategory(ProductCategory category);
+	 void addNewCategory(ProductCategory category);
 	
 	/**
 	 * for fetching all the available categories.
 	 * @return
 	 */
-	public List<ProductCategory> findAllCategories();
+	 List<ProductCategory> findAllCategories();
 	
 	/**
 	 * for updating a selected category.
 	 * 
 	 * @param category
 	 */
-	public void updateSelectedCategory(ProductCategory category);
+	 void updateSelectedCategory(ProductCategory category);
 	/**
 	 * for removing a selected category
 	 * 

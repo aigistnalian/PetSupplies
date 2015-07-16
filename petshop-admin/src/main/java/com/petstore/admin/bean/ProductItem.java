@@ -81,7 +81,7 @@ public class ProductItem implements Serializable
 	 * List of products shown on the page
 	 * as an editable grid datatable.
 	 */
-	private ArrayList<ProductBean> productList = new ArrayList<ProductBean>();
+	private List<ProductBean> productList = new ArrayList<ProductBean>();
 
 	/**
 	 * init method 
@@ -106,7 +106,6 @@ public class ProductItem implements Serializable
 	public void refreshProductList() 
 	{
 		List<Product> productsList = productService.fetchAllProductDetails();
-		System.out.println(productsList);
 
 		productList.clear();
 
@@ -178,7 +177,7 @@ public class ProductItem implements Serializable
 	 * 
 	 * @return
 	 */
-	public ArrayList<ProductBean> getProductList() 
+	public List<ProductBean> getProductList() 
 	{
 		if (this.productList == null) 
 		{

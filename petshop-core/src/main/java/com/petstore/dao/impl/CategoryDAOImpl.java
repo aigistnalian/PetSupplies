@@ -30,7 +30,7 @@ public class CategoryDAOImpl extends AbstractDAO<Integer, ProductCategory>
 	/**
 	 * Logger for CategoryDAOImpl class.
 	 */
-	final static Logger log = Logger.getLogger(CategoryDAOImpl.class);
+	static final  Logger log = Logger.getLogger(CategoryDAOImpl.class);
 	/*
 	 * (non-Javadoc)
 	 * 

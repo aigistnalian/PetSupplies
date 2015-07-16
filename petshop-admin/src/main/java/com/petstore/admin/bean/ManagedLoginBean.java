@@ -64,7 +64,6 @@ public class ManagedLoginBean implements Serializable
     public String loginProject()
     {
     	  boolean result = loginService.validateAdminUserLogin(uname, password);
-          System.out.println(result);
           if (result) 
           {
               // get Http Session and store username

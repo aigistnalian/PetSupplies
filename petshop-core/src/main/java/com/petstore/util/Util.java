@@ -7,11 +7,17 @@ import javax.servlet.http.HttpSession;
 import com.petstore.constants.Constants;
 
 /**
+ * Utility class
+ * 
  * @author analian
  *
  */
-public class Util 
+public final class Util 
 {
+	
+	private Util() {
+	}
+	
 	/**
 	 * Getter for the current HTTP Session
 	 * 
@@ -58,8 +64,12 @@ public class Util
       {
         HttpSession session = getSession();
         if ( session != null )
-            return (String) session.getAttribute(Constants.USER_ID);
+        {
+        	return (String) session.getAttribute(Constants.USER_ID);
+        }
         else
-            return null;
+        {
+        	return null;
+        }
       }
 }

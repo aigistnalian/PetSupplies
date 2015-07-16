@@ -47,7 +47,7 @@ public class CategoryItem implements Serializable
 	 * List of categories to be displayed on the screen
 	 * as a grid data table.
 	 */
-	private  ArrayList<CategoryBean> catList = new ArrayList<CategoryBean>();
+	private  List<CategoryBean> catList = new ArrayList<CategoryBean>();
 
 
 	/**
@@ -90,7 +90,7 @@ public class CategoryItem implements Serializable
 	 * 
 	 * @return
 	 */
-	public ArrayList<CategoryBean> getCatList() 
+	public List<CategoryBean> getCatList() 
 	{
 		return this.catList;
 	}

@@ -33,9 +33,6 @@ public class FileUploadController implements Serializable
 	public void uploadFile(FileUploadEvent event) 
 	{
         byte[] file = event.getFile().getContents();
-        System.out.println(file);
-        System.out.println(getItem());
-        System.out.println("MADE IT INTO FILE UPLOAD !!! ");
    }
 	
 	public void setProductItem(ProductItem productItem) {

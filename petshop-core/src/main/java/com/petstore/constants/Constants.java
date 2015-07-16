@@ -10,9 +10,11 @@ package com.petstore.constants;
  * @author analian
  *
  */
-public class Constants 
+public final class Constants 
 {
-
+	private Constants() {
+	}
+	
 	public static final String ADMIN = "admin";
 	public static final String ANON = "anonymous";
 	public static final String USER = "user";

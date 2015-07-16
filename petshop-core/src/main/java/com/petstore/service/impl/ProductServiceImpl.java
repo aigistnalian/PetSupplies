@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService
 	/**
 	 * Logger for the Product Service implementation class.
 	 */
-	final static Logger log = Logger.getLogger(ProductServiceImpl.class);
+	static final Logger log = Logger.getLogger(ProductServiceImpl.class);
 	
 	/**
 	 * Injected DAO class for interacting with 

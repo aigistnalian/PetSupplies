@@ -31,7 +31,6 @@ public abstract class AbstractDAO<K, E> implements DAO<K, E> {
 	 */
 	protected Class<E> entityClass;
  
- 
 	/**
 	 * Constructor
 	 */
@@ -66,5 +65,39 @@ public abstract class AbstractDAO<K, E> implements DAO<K, E> {
 	public E findById(K id)
 	{ 
 		return entityManager.find(entityClass, id); 
+	}
+	
+	
+
+	/**
+	 * @return the entityManager
+	 */
+	public EntityManager getEntityManager() 
+	{
+		return entityManager;
+	}
+
+	/**
+	 * @param entityManager the entityManager to set
+	 */
+	public void setEntityManager(EntityManager entityManager) 
+	{
+		this.entityManager = entityManager;
+	}
+
+	/**
+	 * @return the entityClass
+	 */
+	public Class<E> getEntityClass() 
+	{
+		return entityClass;
+	}
+
+	/**
+	 * @param entityClass the entityClass to set
+	 */
+	public void setEntityClass(Class<E> entityClass) 
+	{
+		this.entityClass = entityClass;
 	}
 }

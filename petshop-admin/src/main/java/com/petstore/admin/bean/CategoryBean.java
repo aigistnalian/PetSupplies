@@ -35,7 +35,7 @@ public class CategoryBean implements Serializable
 	/**
 	 * Set of Products associated with the category.
 	 */
-	Set<Product> products;
+	private Set<Product> products;
 	
 	/**
 	 * Constructor

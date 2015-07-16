@@ -10,7 +10,7 @@ import com.petstore.model.bo.Product;
  * @author analian
  *
  */
-public interface ProductDAO  extends DAO<Integer, Product>
+ public interface ProductDAO  extends DAO<Integer, Product>
 {
 	
 	/**
@@ -18,27 +18,27 @@ public interface ProductDAO  extends DAO<Integer, Product>
 	 * 
 	 * @return
 	 */
-	public List<Product> fetchProductDetails();
+	 List<Product> fetchProductDetails();
 	
 	/**
 	 * adding a new product.
 	 * 
 	 * @param product
 	 */
-	public void addNewProduct(Product product);
+	 void addNewProduct(Product product);
 	
 	/**
 	 * updating an existing product.
 	 * 
 	 * @param product
 	 */
-	public void updateProduct(Product product);
+	 void updateProduct(Product product);
 	
 	/**
 	 * removing a selected product.
 	 * 
 	 * @param product
 	 */
-	public void removeProduct(Product product);
+	 void removeProduct(Product product);
 
 }
