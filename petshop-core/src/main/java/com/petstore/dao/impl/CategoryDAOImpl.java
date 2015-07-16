@@ -18,12 +18,18 @@ import com.petstore.model.bo.Product;
 import com.petstore.model.bo.ProductCategory;
 
 /**
+ * Implementation class for Category DAO
+ * 
  * @author analian
  *
  */
 public class CategoryDAOImpl extends AbstractDAO<Integer, ProductCategory>
-		implements CategoryDAO {
+		implements CategoryDAO
+{
 
+	/**
+	 * Logger for CategoryDAOImpl class.
+	 */
 	final static Logger log = Logger.getLogger(CategoryDAOImpl.class);
 	/*
 	 * (non-Javadoc)
@@ -32,7 +38,8 @@ public class CategoryDAOImpl extends AbstractDAO<Integer, ProductCategory>
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ProductCategory> fetchAllCategories() {
+	public List<ProductCategory> fetchAllCategories() 
+	{
 		log.info("creating query for fetching all categories");
 		
 		Query query = entityManager.createQuery("select pc from ProductCategory pc");
@@ -50,7 +57,8 @@ public class CategoryDAOImpl extends AbstractDAO<Integer, ProductCategory>
 	 */
 	@Override
 	@Transactional
-	public void addNewCategory(ProductCategory category) {
+	public void addNewCategory(ProductCategory category) 
+	{
 		log.info("DAO Class --> Adding new category");
 		entityManager.persist(category);
 	}
@@ -63,23 +71,31 @@ public class CategoryDAOImpl extends AbstractDAO<Integer, ProductCategory>
 	 */
 	@Override
 	@Transactional
-	public void removeCategory(ProductCategory category) {
+	public void removeCategory(ProductCategory category) 
+	{
 		Query query =null;
-		try {
+		try
+		{
 			Set<Product> products =  category.getProducts();
-			if(products!=null){
+			if(products!=null)
+			{
 				log.debug("Category has products in it" + products);
-				for (Product product : products) {
-					query  = entityManager.createQuery(Constants.DELETE_PRODUCT_SQL_STRING + product.getId() + "");
+				for (Product product : products) 
+				{
+					query  = entityManager.createQuery(
+							Constants.DELETE_PRODUCT_SQL_STRING + product.getId() + "");
 					query.executeUpdate();
 				}
 				log.debug("Removed associated products");
 			}
-			query = entityManager.createQuery( Constants.DELETE_CATEGORY_SQL_STRING + category.getId() + "");
+			query = entityManager.createQuery(
+					Constants.DELETE_CATEGORY_SQL_STRING + category.getId() + "");
 			query.executeUpdate();
 			log.debug("deleted category");
-		} catch (Exception e) {
-			e.printStackTrace();
+		} 
+		catch (Exception e) 
+		{
+			log.error("Exception caught :" + e.getStackTrace());
 		}
 	}
 
@@ -91,7 +107,8 @@ public class CategoryDAOImpl extends AbstractDAO<Integer, ProductCategory>
 	 */
 	@Override
 	@Transactional
-	public void updateCategory(ProductCategory category) {
+	public void updateCategory(ProductCategory category) 
+	{
 		entityManager.merge(category);
 		log.debug("Updated category" + category);
 	}

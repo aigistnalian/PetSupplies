@@ -28,6 +28,8 @@ public class Constants
 	
 	public static final String EMPTY = "";
 	
+	public static final String SELECT_USER_SQL_STRING = "Select u from User u where u.username = '" ;
+	
 	public static final String DELETE_PRODUCT_SQL_STRING = "delete from Product where id = ";
 	
 	public static final String DELETE_CATEGORY_SQL_STRING = "delete from ProductCategory where id = ";

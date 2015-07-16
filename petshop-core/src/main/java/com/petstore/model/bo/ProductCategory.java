@@ -22,7 +22,8 @@ import org.hibernate.annotations.OnDeleteAction;
  */
 @Entity
 @Table(name="PRODUCT_CATEGORY")
-public class ProductCategory implements Serializable{
+public class ProductCategory implements Serializable
+{
 	
 	/**
 	 * 

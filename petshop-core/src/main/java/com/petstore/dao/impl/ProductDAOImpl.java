@@ -16,18 +16,25 @@ import com.petstore.dao.ProductDAO;
 import com.petstore.model.bo.Product;
 
 /**
+ * Implementation class for the ProductDAO
+ * 
  * @author analian
  *
  */
-public class ProductDAOImpl extends AbstractDAO<Integer, Product> implements ProductDAO {
+public class ProductDAOImpl extends AbstractDAO<Integer, Product> implements ProductDAO 
+{
 
+	/**
+	 * Logger for ProductDAOImpl class
+	 */
 	final static Logger log = Logger.getLogger(ProductDAOImpl.class);
 	
 	/* (non-Javadoc)
 	 * @see com.petstore.dao.ProductDAO#fetchProductDetails()
 	 */
 	@Override
-	public List<Product> fetchProductDetails() {
+	public List<Product> fetchProductDetails() 
+	{
 		log.info("creating SQL Query for selecting all products");
 		Query query = entityManager.createQuery(Constants.SELECT_PRODUCT_SQL_STRING);
 		@SuppressWarnings("unchecked")
@@ -41,7 +48,8 @@ public class ProductDAOImpl extends AbstractDAO<Integer, Product> implements Pro
 	 */
 	@Override
 	@Transactional
-	public void addNewProduct(Product product) {
+	public void addNewProduct(Product product) 
+	{
 		log.debug("Adding new product -->" + product);
 		entityManager.persist(product);
 	}
@@ -51,7 +59,8 @@ public class ProductDAOImpl extends AbstractDAO<Integer, Product> implements Pro
 	 */
 	@Override
 	@Transactional
-	public void updateProduct(Product product) {
+	public void updateProduct(Product product) 
+	{
 		log.debug("Updating product " + product);
 		entityManager.merge(product);
 	}
@@ -61,9 +70,11 @@ public class ProductDAOImpl extends AbstractDAO<Integer, Product> implements Pro
 	 */
 	@Override
 	@Transactional
-	public void removeProduct(Product product) {
+	public void removeProduct(Product product) 
+	{
 		log.debug("Removing product -->" + product);
-		Query query = entityManager.createQuery(Constants.DELETE_PRODUCT_SQL_STRING + product.getId() + "");
+		Query query = entityManager.
+				createQuery(Constants.DELETE_PRODUCT_SQL_STRING + product.getId() + "");
 		query.executeUpdate();
 	}
 
