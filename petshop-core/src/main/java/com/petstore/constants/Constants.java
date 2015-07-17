@@ -28,6 +28,8 @@ public final class Constants
 	public static final String INVALID_LOGIN_MESSAGE = "Invalid Login!";
 	public static final String TRY_AGAIN_MESSAGE = "Please Try Again!";
 	
+	public static final String PLEASE_REGISTER_MESSAGE = "Do you want to register for a new account? Click Register!";
+	
 	public static final String EMPTY = "";
 	
 	public static final String SELECT_USER_SQL_STRING = "Select u from User u where u.username = '" ;

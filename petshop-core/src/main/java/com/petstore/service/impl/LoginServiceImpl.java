@@ -59,4 +59,30 @@ public class LoginServiceImpl implements LoginService{
 		log.debug("returning after login -->"+ isUserValid);
 		return isUserValid;
 	}
+
+	/* (non-Javadoc)
+	 * @see com.petstore.service.LoginService#validateUserLogin(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public boolean validateUserLogin(String userName, String password) {
+		boolean isUserValid = false; 
+		User user = userDAO.getLoginDetails(userName, password);
+		log.debug("Getting the user for -->" + userName);
+		if(user!=null)
+		{
+			if(user.getRoles()!=null && !user.getRoles().isEmpty())
+			{
+				for (Roles role : user.getRoles()) 
+				{
+					if(Constants.USER.equalsIgnoreCase(role.getName()))
+					{
+						isUserValid = true;
+						break;
+					}
+				}
+			}
+		}
+		log.debug("returning after login -->"+ isUserValid);
+		return isUserValid;
+	}
 }

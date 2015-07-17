@@ -12,12 +12,19 @@ public interface LoginService
 {
 
 	/**
-	 * for validating the user login credentials
+	 * for validating the admin user login credentials
 	 * 
 	 * @param userId
 	 * @param password
 	 * @return
 	 */
 	boolean validateAdminUserLogin(String userId, String password);
+	
+	/**
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	boolean validateUserLogin(String userName, String password);
 	
 }

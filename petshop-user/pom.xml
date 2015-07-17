@@ -9,4 +9,11 @@
   <artifactId>petshop-user</artifactId>
   <packaging>war</packaging>
   <name>petshop-user</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>petshop-core</groupId>
+  		<artifactId>petshop-core</artifactId>
+  		<version>1.0</version>
+  	</dependency>
+  </dependencies>
 </project>
