@@ -1,31 +1,47 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
 	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
-	
+
 </h:head>
-<h:body >
-<div id="sideLinks" class="menuLeft">
-<h2>QUICK LINKS</h2>
-Welcome #{loginBean.uname}
-<br/>
-<hr/>
-<h:form id="sidebarForm">
-<center>
-<p:commandLink value="Category" action="#{sidebar.sendToCategoryPage()}" styleClass="menuLeftText" />
-<p:spacer/> <br/>
-<p:commandLink value="Product" action="#{sidebar.sendToProductPage()}" styleClass="menuLeftText" />
-<p:spacer/> <br/>
-<hr/>
-<p:commandLink value="Logout" action="#{sidebar.logout()}" styleClass="menuLeftText"/>
-</center>
-</h:form>
-</div>
+<h:body>
+	<div id="sideLinks" class="menuLeft">
+		<h2>QUICK LINKS</h2>
+		Welcome #{userLogin.userName} <br />
+		<hr />
+		<h:form id="sidebarForm">
+			<center>
+				<p:commandLink value="Browse Products"
+					action="#{redirectController.redirectToBrowseProducts}"
+					styleClass="menuLeftText" icon="ui-icon-link" />
+				<p:spacer />
+				<br />
+					
+					<p:commandLink value="Home"
+						action="#{redirectController.redirectToHomePage}"
+						styleClass="menuLeftText" id="homePageLink"
+						rendered="#{redirectController.showHomePageLink}" />
+					<p:spacer />
+					<br />
+
+					<p:commandLink value="Login"
+						action="#{redirectController.redirectToLoginPage()}"
+						styleClass="menuLeftText" id="LoginLink"
+						rendered="#{userLogin.registeredUser==false and userLogin.loginPage==false}" />
+					<p:spacer />
+					<br />
+					<hr />
+					
+					<p:commandLink value="Logout" action="#{userLogin.logout()}"
+						styleClass="menuLeftText" rendered="#{userLogin.registeredUser}" />
+			</center>
+		</h:form>
+	</div>
 </h:body>
 </html>

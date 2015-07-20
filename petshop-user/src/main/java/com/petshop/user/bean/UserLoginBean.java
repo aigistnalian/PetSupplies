@@ -21,6 +21,13 @@ import com.petstore.util.Util;
 @SessionScoped
 public class UserLoginBean implements Serializable
 {
+	public boolean isRegisteredUser;
+	
+	public boolean loginPage = true;
+	
+	public UserLoginBean() {
+		userName = Constants.GUEST;
+	}
 	
 	 /**
      * Injected Service class handling
@@ -38,10 +45,12 @@ public class UserLoginBean implements Serializable
             // get Http Session and store username
             HttpSession session = Util.getSession();
             session.setAttribute(Constants.USERNAME, userName);
+            isRegisteredUser = true;
             return Constants.LANDING_PAGE_STRING;
         } 
         else 
         {
+        	isRegisteredUser = false;
             FacesContext.getCurrentInstance().addMessage(
                     null,
                     new FacesMessage(FacesMessage.SEVERITY_WARN,
@@ -53,7 +62,19 @@ public class UserLoginBean implements Serializable
         }
 	}
 
-	
+	/**
+	  * user is logged out when the
+	  * logout link is clicked
+	  * 
+	 * @return
+	 */
+	public String logout() 
+	{
+	        HttpSession session = Util.getSession();
+	        session.invalidate();
+	        isRegisteredUser = false;
+	         return Constants.LOGIN_REDIRECT_STRING;
+	 }
 	
 	/**
 	 * Default value
@@ -91,6 +112,34 @@ public class UserLoginBean implements Serializable
 	 */
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	/**
+	 * @return the isRegisteredUser
+	 */
+	public boolean isRegisteredUser() {
+		return isRegisteredUser;
+	}
+
+	/**
+	 * @param isRegisteredUser the isRegisteredUser to set
+	 */
+	public void setRegisteredUser(boolean isRegisteredUser) {
+		this.isRegisteredUser = isRegisteredUser;
+	}
+
+	/**
+	 * @return the loginPage
+	 */
+	public boolean isLoginPage() {
+		return loginPage;
+	}
+
+	/**
+	 * @param loginPage the loginPage to set
+	 */
+	public void setLoginPage(boolean loginPage) {
+		this.loginPage = loginPage;
 	}
 	
 

@@ -11,6 +11,12 @@
 	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
 </h:head>
 <h:body >
-HI
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="content">
+		<div id="imageDiv" class="content">
+<!-- 		<h:graphicImage library="imgs" name="Pet_Store.png" height="470px"  />
+ -->		</div>
+		</ui:define>
+		</ui:composition>
 </h:body>
 </html>

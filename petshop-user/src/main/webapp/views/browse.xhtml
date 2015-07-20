@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
+	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="content">
+			<div id="imageDiv" class="content">
+			<h:form id="browseForm">
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<p:outputLabel for="category" value="Category: " />
+					
+					<p:selectOneMenu id="category" value="#{searchBean.category}"
+						style="width:125px">
+						<p:ajax listener="#{searchBean.updateCategorySelected}"
+							update="categoryProducts" />
+						<f:selectItem itemLabel="Select Category" itemValue=""
+							noSelectionOption="true" />
+						<f:selectItems value="#{searchBean.listOfCategories}" var="entry"
+							itemLabel="#{entry.name}" itemValue="#{entry.id}" />
+					</p:selectOneMenu>
+				</h:panelGrid>
+				
+				<p:dataTable value="#{searchBean.dataTableProducts}" var="prod" id="categoryProducts"
+						style="width: 860px;" scrollable="true" scrollHeight="80" scrollRows="2">
+						<f:facet name="header">  
+                        Product In this Category  
+                        </f:facet>
+
+						<p:column headerText="Name">
+							<h:outputText value="#{prod.name}" />
+						</p:column>
+
+						<p:column headerText="Description">
+							<h:outputText value="#{prod.description}" />
+						</p:column>
+						
+						<p:column headerText="Price">
+							<h:outputText value="#{prod.price}" />
+						</p:column>
+					</p:dataTable>
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

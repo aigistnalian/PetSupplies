@@ -25,4 +25,13 @@
   PATH="/views/landing.xhtml" SHAPE="448,17,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#user#userRegistration.xhtml"
   PATH="/user/userRegistration.xhtml" SHAPE="464,161,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#*:1" PATH="/*" SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:1" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="browseProducts::#views#browse.xhtml"
+    NAME="output" PATH="/views/browse.xhtml"
+    TARGET="rules:#views#browse.xhtml" TITLE="browseProducts" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#browse.xhtml"
+  PATH="/views/browse.xhtml" SHAPE="240,289,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
