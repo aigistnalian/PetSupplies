@@ -11,9 +11,91 @@
 </h:head>
 	<ui:composition template="/WEB-INF/templates/template.xhtml">
 		<ui:define name="content">
+			<div id="imageDiv" class="content">
+			<p:growl id="message" showDetail="false"></p:growl>
 				<h:form id="registrationForm">
-				
+					<p:tabView orientation="left" >
+					<p:ajax event="tabChange" listener="#{registrationBean.onTabChange}" />
+					<p:tab title="Welcome">
+					<p>
+						<b>Welcome to the Pet Supplies Registration page.</b>
+						<p:separator />
+						<i>Please choose the tabs to enter your information</i>
+					</p>
+					</p:tab>
+					
+					<p:tab title="Name" titleStyleClass="menuLeftText">
+						
+						<p:outputLabel value="User Name" for="userName"/> 
+						<p:inputText  value="#{registrationBean.registrationForm.userName}"
+						id="userName"
+				        required="true" 
+        				requiredMessage="UserName is required"
+        				validatorMessage="UserName should be of length from 5 to 15 chars"
+						 >
+						  <f:validateLength minimum="5" maximum="15" for="userName"></f:validateLength>
+						  </p:inputText>
+						  
+						  <br/>
+						 <p:outputLabel value="Please Enter a Unique User ID you will use for logging into the system" styleClass="welcomeGreeting"></p:outputLabel>
+						<p:spacer height="23px"></p:spacer>
+						<br/><br/>
+						 
+						<p:outputLabel value="First Name" for="firstName"></p:outputLabel>
+						<p:inputText
+							value="#{registrationBean.registrationForm.firstName}"
+							id="firstName" required="true"
+							requiredMessage="FirstName is required"
+							validatorMessage="FirstName should be of length from 5 to 15 chars">
+							<f:validateLength minimum="5" maximum="15" for="firstName"></f:validateLength>
+						</p:inputText>
+							<p:spacer height="23px"></p:spacer>
+						<br/><br/>
+						
+						 <p:outputLabel value="Please Enter Your First Name" styleClass="welcomeGreeting"></p:outputLabel>
+						<p:spacer height="23px"></p:spacer>
+						<br/><br/>
+							<p:outputLabel value="Last Name" for="lastName"></p:outputLabel>
+						<p:inputText
+							value="#{registrationBean.registrationForm.lastName}"
+							id="lastName" required="true"
+							requiredMessage="Last Name is required"
+							validatorMessage="Last Name should be of length from 5 to 25 chars">
+							<f:validateLength minimum="5" maximum="25" for="firstName"></f:validateLength>
+						</p:inputText>
+							<p:spacer height="23px"></p:spacer>
+						<br/><br/>
+						
+						 <p:outputLabel value="Please Enter Your Last Name" styleClass="welcomeGreeting"></p:outputLabel>
+						<p:spacer height="23px"></p:spacer>
+						<br/><br/>
+					</p:tab>
+					
+					<p:tab title="Address" titleStyleClass="menuLeftText">
+					<p:outputLabel value="Address" for="address" style="padding-right:5px;"/> 
+						<p:inputTextarea  value="#{registrationBean.registrationForm.address}"
+						id="address" 
+				        required="true" rows="3" cols="30" counter="display" 
+				        	maxlength="50" counterTemplate="{0} characters remaining." autoResize="false" 
+        				requiredMessage="Address is required"
+						 >
+						 </p:inputTextarea>
+						  <h:outputText id="display" />
+						  <br/> <br/>
+					<p:outputLabel value="City" for="city" style="padding-right:35px;"/> 
+						<p:inputText
+							value="#{registrationBean.registrationForm.city}"
+							id="city" required="true"
+							requiredMessage="Last Name is required"
+							validatorMessage="City should be of length from 5 to 25 chars">
+							<f:validateLength minimum="5" maximum="25" for="city"></f:validateLength>
+						</p:inputText>
+							<p:spacer height="23px"></p:spacer>
+						<br/><br/>
+					</p:tab>
+					</p:tabView>
 				</h:form>
+				</div>
 			</ui:define>
 	</ui:composition>
 
