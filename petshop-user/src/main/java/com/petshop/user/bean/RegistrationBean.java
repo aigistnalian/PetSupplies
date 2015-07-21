@@ -20,6 +20,13 @@ public class RegistrationBean implements Serializable
 {
 	 private RegistrationForm registrationForm = null;
 
+	 
+	 public String register(){
+		 System.out.println("Registered" + registrationForm.getUserName());
+		 
+		 return null;
+	 }
+	 
 	/**
 	 * Default value
 	 */
@@ -27,7 +34,7 @@ public class RegistrationBean implements Serializable
 	
 	public void onTabChange(TabChangeEvent event) {
 		System.out.println(event);
-		 FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle());
+		 FacesMessage msg = new FacesMessage("Thank you for Entering the details!", "Active Tab: " + event.getTab().getTitle());
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 

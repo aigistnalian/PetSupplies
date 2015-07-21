@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext">
+<h:head>
+	<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
+	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
+</h:head>
+
+<body>
+	<ui:composition>
+		<p:tab title="Personal Details" titleStyleClass="menuLeftText"
+			titleStyle="border-radius:15px;">
+
+			<p:outputLabel value="Email ID" for="email"
+				style="padding-right:35px;" />
+			<p:inputText value="#{registrationBean.registrationForm.email}"
+				id="email" required="true" requiredMessage="Email is required">
+				<f:validateRegex pattern="[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,3}"></f:validateRegex>
+			</p:inputText>
+			<p:spacer height="23px"></p:spacer>
+
+			<p:outputLabel value="Please Enter Your Email ID"
+				styleClass="welcomeGreeting"></p:outputLabel>
+			<p:spacer height="23px"></p:spacer>
+			<br />
+			<br />
+
+			<p:outputLabel value="Password" for="password"
+				style="padding-right:25px;" />
+			<p:password value="#{registrationBean.registrationForm.password}"
+				feedback="true" id="password" required="true"
+				requiredMessage="Password is required"
+				validatorMessage="Password should be of length from 5 to 15 chars">
+				<f:validateLength minimum="5" maximum="15" for="password"></f:validateLength>
+			</p:password>
+			<p:spacer height="23px"></p:spacer>
+			<br />
+			<br />
+
+		</p:tab>
+	</ui:composition>
+</body>
+</html>

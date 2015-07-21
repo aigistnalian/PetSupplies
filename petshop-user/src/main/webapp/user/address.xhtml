@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext">
+<h:head>
+	<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
+	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
+</h:head>
+
+<body>
+	<ui:composition>
+		<p:tab title="Address" titleStyleClass="menuLeftText"
+			titleStyle="border-radius:15px;">
+
+			<p:outputLabel value="Address" for="address"
+				style="padding-right:5px;" />
+			<p:inputTextarea value="#{registrationBean.registrationForm.address}"
+				id="address" required="true" rows="3" cols="30" counter="display"
+				maxlength="50" counterTemplate="{0} characters remaining."
+				autoResize="false" requiredMessage="Address is required">
+			</p:inputTextarea>
+			<h:outputText id="display" />
+			<br />
+			<br />
+			<p:outputLabel value="City" for="city" style="padding-right:35px;" />
+			<p:inputText value="#{registrationBean.registrationForm.city}"
+				id="city" required="true" requiredMessage="Last Name is required"
+				validatorMessage="City should be of length from 5 to 25 chars">
+				<f:validateLength minimum="5" maximum="25" for="city"></f:validateLength>
+			</p:inputText>
+			<p:spacer height="23px"></p:spacer>
+			<br />
+			<br />
+
+			<p:outputLabel value="Pin" for="pin" style="padding-right:35px;" />
+			<p:inputText value="#{registrationBean.registrationForm.pin}"
+				id="pin" required="true" requiredMessage="Pin is required"
+				validatorMessage="Pin should be of length from 5 to 8 chars">
+				<f:validateLength minimum="5" maximum="8" for="pin"></f:validateLength>
+			</p:inputText>
+			<p:spacer height="23px"></p:spacer>
+			<br />
+			<br />
+		</p:tab>
+	</ui:composition>
+</body>
+</html>

@@ -1,102 +1,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:mj="http://mojarra.dev.java.net/mojarra_ext">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext">
 <h:head>
-<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
+	<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
 	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
 </h:head>
-	<ui:composition template="/WEB-INF/templates/template.xhtml">
-		<ui:define name="content">
-			<div id="imageDiv" class="content">
+<ui:composition template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<div id="imageDiv" class="content">
+
 			<p:growl id="message" showDetail="false"></p:growl>
-				<h:form id="registrationForm">
-					<p:tabView orientation="left" >
-					<p:ajax event="tabChange" listener="#{registrationBean.onTabChange}" />
-					<p:tab title="Welcome">
-					<p>
-						<b>Welcome to the Pet Supplies Registration page.</b>
-						<p:separator />
-						<i>Please choose the tabs to enter your information</i>
-					</p>
+			<h:form id="registrationForm">
+				<p:tabView orientation="left">
+					<p:ajax event="tabChange"
+						listener="#{registrationBean.onTabChange}" />
+					<p:tab title="Welcome" titleStyle="border-radius:15px;">
+						<p>
+							<b>Welcome to the Pet Supplies Registration page.</b>
+							<p:separator />
+							<i>Please choose the tabs to enter your information</i>
+						</p>
 					</p:tab>
-					
-					<p:tab title="Name" titleStyleClass="menuLeftText">
+
+					<ui:include src="name.xhtml"></ui:include>
+
+					<ui:include src="address.xhtml"></ui:include>
+
+					<ui:include src="personalDetails.xhtml"></ui:include>
+
+					<p:tab title="Submit" titleStyleClass="menuLeftText"
+						titleStyle="border-radius:20px;">
+						<p:messages autoUpdate="true" id="message" redisplay="false">
+						</p:messages>
 						
-						<p:outputLabel value="User Name" for="userName"/> 
-						<p:inputText  value="#{registrationBean.registrationForm.userName}"
-						id="userName"
-				        required="true" 
-        				requiredMessage="UserName is required"
-        				validatorMessage="UserName should be of length from 5 to 15 chars"
-						 >
-						  <f:validateLength minimum="5" maximum="15" for="userName"></f:validateLength>
-						  </p:inputText>
-						  
-						  <br/>
-						 <p:outputLabel value="Please Enter a Unique User ID you will use for logging into the system" styleClass="welcomeGreeting"></p:outputLabel>
-						<p:spacer height="23px"></p:spacer>
-						<br/><br/>
-						 
-						<p:outputLabel value="First Name" for="firstName"></p:outputLabel>
-						<p:inputText
-							value="#{registrationBean.registrationForm.firstName}"
-							id="firstName" required="true"
-							requiredMessage="FirstName is required"
-							validatorMessage="FirstName should be of length from 5 to 15 chars">
-							<f:validateLength minimum="5" maximum="15" for="firstName"></f:validateLength>
-						</p:inputText>
-							<p:spacer height="23px"></p:spacer>
-						<br/><br/>
+						<p:outputLabel
+							value="Please check all the Details and click Register"
+							styleClass="welcomeGreeting"></p:outputLabel>
+						<p:spacer height="33" />
 						
-						 <p:outputLabel value="Please Enter Your First Name" styleClass="welcomeGreeting"></p:outputLabel>
-						<p:spacer height="23px"></p:spacer>
-						<br/><br/>
-							<p:outputLabel value="Last Name" for="lastName"></p:outputLabel>
-						<p:inputText
-							value="#{registrationBean.registrationForm.lastName}"
-							id="lastName" required="true"
-							requiredMessage="Last Name is required"
-							validatorMessage="Last Name should be of length from 5 to 25 chars">
-							<f:validateLength minimum="5" maximum="25" for="firstName"></f:validateLength>
-						</p:inputText>
-							<p:spacer height="23px"></p:spacer>
-						<br/><br/>
-						
-						 <p:outputLabel value="Please Enter Your Last Name" styleClass="welcomeGreeting"></p:outputLabel>
-						<p:spacer height="23px"></p:spacer>
-						<br/><br/>
+						<p:commandButton value="Register"
+							action="#{registrationBean.register}" ajax="false"></p:commandButton>
 					</p:tab>
-					
-					<p:tab title="Address" titleStyleClass="menuLeftText">
-					<p:outputLabel value="Address" for="address" style="padding-right:5px;"/> 
-						<p:inputTextarea  value="#{registrationBean.registrationForm.address}"
-						id="address" 
-				        required="true" rows="3" cols="30" counter="display" 
-				        	maxlength="50" counterTemplate="{0} characters remaining." autoResize="false" 
-        				requiredMessage="Address is required"
-						 >
-						 </p:inputTextarea>
-						  <h:outputText id="display" />
-						  <br/> <br/>
-					<p:outputLabel value="City" for="city" style="padding-right:35px;"/> 
-						<p:inputText
-							value="#{registrationBean.registrationForm.city}"
-							id="city" required="true"
-							requiredMessage="Last Name is required"
-							validatorMessage="City should be of length from 5 to 25 chars">
-							<f:validateLength minimum="5" maximum="25" for="city"></f:validateLength>
-						</p:inputText>
-							<p:spacer height="23px"></p:spacer>
-						<br/><br/>
-					</p:tab>
-					</p:tabView>
-				</h:form>
-				</div>
-			</ui:define>
-	</ui:composition>
+
+				</p:tabView>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
 
 </html>

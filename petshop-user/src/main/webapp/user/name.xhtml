@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:mj="http://mojarra.dev.java.net/mojarra_ext">
+<h:head>
+	<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
+	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
+</h:head>
+
+<body>
+<ui:composition>
+	<p:tab title="Name" titleStyleClass="menuLeftText"
+		titleStyle="border-radius:15px;">
+
+		<p:outputLabel value="User Name" for="userName" />
+		<p:inputText value="#{registrationBean.registrationForm.userName}"
+			id="userName" required="true" requiredMessage="UserName is required"
+			validatorMessage="UserName should be of length from 5 to 15 chars">
+			<f:validateLength minimum="5" maximum="15" for="userName"></f:validateLength>
+		</p:inputText>
+
+		<br />
+		<p:outputLabel
+			value="Please Enter a Unique User ID you will use for logging into the system"
+			styleClass="welcomeGreeting"></p:outputLabel>
+		<p:spacer height="23px"></p:spacer>
+		<br />
+		<br />
+
+		<p:outputLabel value="First Name" for="firstName"></p:outputLabel>
+		<p:inputText value="#{registrationBean.registrationForm.firstName}"
+			id="firstName" required="true"
+			requiredMessage="FirstName is required"
+			validatorMessage="FirstName should be of length from 5 to 15 chars">
+			<f:validateLength minimum="5" maximum="15" for="firstName"></f:validateLength>
+		</p:inputText>
+		<p:spacer height="23px"></p:spacer>
+		<br />
+		<br />
+
+		<p:outputLabel value="Please Enter Your First Name"
+			styleClass="welcomeGreeting"></p:outputLabel>
+		<p:spacer height="23px"></p:spacer>
+		<br />
+		<br />
+		<p:outputLabel value="Last Name" for="lastName"></p:outputLabel>
+		<p:inputText value="#{registrationBean.registrationForm.lastName}"
+			id="lastName" required="true" requiredMessage="Last Name is required"
+			validatorMessage="Last Name should be of length from 5 to 25 chars">
+			<f:validateLength minimum="5" maximum="25" for="firstName"></f:validateLength>
+		</p:inputText>
+		<p:spacer height="23px"></p:spacer>
+		<br />
+		<br />
+
+		<p:outputLabel value="Please Enter Your Last Name"
+			styleClass="welcomeGreeting"></p:outputLabel>
+		<p:spacer height="23px"></p:spacer>
+		<br />
+		<br />
+	</p:tab>
+	</ui:composition>
+</body>
+</html>
