@@ -5,9 +5,7 @@ import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
 
-import com.petstore.constants.Constants;
 import com.petstore.dao.UserDAO;
-import com.petstore.model.bo.Roles;
 import com.petstore.model.bo.User;
 import com.petstore.service.LoginService;
 
@@ -44,16 +42,9 @@ public class LoginServiceImpl implements LoginService{
 		log.debug("Getting the user for -->" + userId);
 		if(user!=null)
 		{
-			if(user.getRoles()!=null && !user.getRoles().isEmpty())
+			if(user.isAdminUser())
 			{
-				for (Roles role : user.getRoles()) 
-				{
-					if(Constants.ADMIN.equalsIgnoreCase(role.getName()))
-					{
-						isUserValid = true;
-						break;
-					}
-				}
+				isUserValid = true;
 			}
 		}
 		log.debug("returning after login -->"+ isUserValid);
@@ -70,16 +61,9 @@ public class LoginServiceImpl implements LoginService{
 		log.debug("Getting the user for -->" + userName);
 		if(user!=null)
 		{
-			if(user.getRoles()!=null && !user.getRoles().isEmpty())
+			if(!user.isAdminUser())
 			{
-				for (Roles role : user.getRoles()) 
-				{
-					if(Constants.USER.equalsIgnoreCase(role.getName()))
-					{
-						isUserValid = true;
-						break;
-					}
-				}
+				isUserValid = true;
 			}
 		}
 		log.debug("returning after login -->"+ isUserValid);

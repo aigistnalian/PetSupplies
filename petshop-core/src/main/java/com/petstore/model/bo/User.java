@@ -10,9 +10,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,6 +37,7 @@ public class User implements Serializable
 	 * ID column
 	 */
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID")
 	private int user_id;
 	/**
@@ -79,15 +81,19 @@ public class User implements Serializable
 	@Column(name="PIN")
 	private String pin;
 	
-	/**
+	@Column(name="IS_ADMIN")
+	private boolean adminUser;
+	
+	
+/*	*//**
 	 * 
-	 */
+	 *//*
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinTable(name = "USER_ROLES", 
 	joinColumns = { @JoinColumn(name = "user_id") }, 
 	inverseJoinColumns = { @JoinColumn(name = "role_id") })
 	List<Roles> roles;
-
+*/
 	/**
 	 * @param user_id the user_id to set
 	 */
@@ -231,19 +237,19 @@ public class User implements Serializable
 
 	/**
 	 * @return the roles
-	 */
+	 *//*
 	public List<Roles> getRoles() 
 	{
 		return roles;
 	}
 
-	/**
+	*//**
 	 * @param roles the roles to set
-	 */
+	 *//*
 	public void setRoles(List<Roles> roles)
 	{
 		this.roles = roles;
-	}
+	}*/
 
 	/**
 	 * @return the serialversionuid
@@ -251,6 +257,18 @@ public class User implements Serializable
 	public static long getSerialversionuid() 
 	{
 		return serialVersionUID;
+	}
+	/**
+	 * @return the adminUser
+	 */
+	public boolean isAdminUser() {
+		return adminUser;
+	}
+	/**
+	 * @param adminUser the adminUser to set
+	 */
+	public void setAdminUser(boolean adminUser) {
+		this.adminUser = adminUser;
 	}
 
 }

@@ -8,8 +8,13 @@ import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import org.primefaces.event.TabChangeEvent;
+
+import com.petstore.constants.Constants;
+import com.petstore.model.bo.User;
+import com.petstore.service.RegistrationService;
 
 /**
  * @author analian
@@ -18,23 +23,56 @@ import org.primefaces.event.TabChangeEvent;
 @ManagedBean(name="registrationBean")
 public class RegistrationBean implements Serializable
 {
-	 private RegistrationForm registrationForm = null;
-
-	 
-	 public String register(){
-		 System.out.println("Registered" + registrationForm.getUserName());
-		 
-		 return null;
-	 }
-	 
 	/**
 	 * Default value
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public void onTabChange(TabChangeEvent event) {
-		System.out.println(event);
-		 FacesMessage msg = new FacesMessage("Thank you for Entering the details!", "Active Tab: " + event.getTab().getTitle());
+	@Inject
+	RegistrationService registrationService;
+	
+	 /**
+	 * Backing bean
+	 */
+	private RegistrationForm registrationForm = null;
+
+	 /**
+	 * @return
+	 */
+	public String register()
+	 {
+		 System.out.println("Registered" + registrationForm.getUserName());
+		 User user  = mapRegistrationFormToUser(registrationForm);
+		registrationService.registerNewUser(user);
+		 return Constants.LOGIN_PAGE_STRING;
+	 }
+	 
+	/**
+	 * @param registrationForm2
+	 * @return
+	 */
+	private User mapRegistrationFormToUser(RegistrationForm regForm) 
+	{
+		User mappedUser = new User();
+		mappedUser.setAddress(regForm.getAddress());
+		mappedUser.setCity(regForm.getCity());
+		mappedUser.setEmail_id(regForm.getEmail());
+		mappedUser.setFirst_name(regForm.getFirstName());
+		mappedUser.setLast_name(regForm.getLastName());
+		mappedUser.setPassword(regForm.getPassword());
+		mappedUser.setUsername(regForm.getUserName());
+		mappedUser.setPin(regForm.getPin());
+		return mappedUser;
+	}
+
+
+	/**
+	 * @param event
+	 */
+	public void onTabChange(TabChangeEvent event) 
+	{
+		 FacesMessage msg = new FacesMessage(Constants.ENTERING_DETAILS_MESSAGE, 
+				 					"Active Tab: " + event.getTab().getTitle());
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 
