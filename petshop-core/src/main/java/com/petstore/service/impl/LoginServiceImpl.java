@@ -18,7 +18,8 @@ import com.petstore.service.LoginService;
  *
  */
 @Stateless
-public class LoginServiceImpl implements LoginService{
+public class LoginServiceImpl implements LoginService
+{
 
 	/**
 	 * Logger for the Login Service implementation class.
@@ -55,7 +56,8 @@ public class LoginServiceImpl implements LoginService{
 	 * @see com.petstore.service.LoginService#validateUserLogin(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean validateUserLogin(String userName, String password) {
+	public boolean validateUserLogin(String userName, String password) 
+	{
 		boolean isUserValid = false; 
 		User user = userDAO.getLoginDetails(userName, password);
 		log.debug("Getting the user for -->" + userName);

@@ -83,24 +83,7 @@ public class User implements Serializable
 	
 	@Column(name="IS_ADMIN")
 	private boolean adminUser;
-	
-	
-/*	*//**
-	 * 
-	 *//*
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinTable(name = "USER_ROLES", 
-	joinColumns = { @JoinColumn(name = "user_id") }, 
-	inverseJoinColumns = { @JoinColumn(name = "role_id") })
-	List<Roles> roles;
-*/
-	/**
-	 * @param user_id the user_id to set
-	 */
-	public void setUser_id(int user_id) 
-	{
-		this.user_id = user_id;
-	}
+
 	/**
 	 * @return the user_id
 	 */
@@ -108,6 +91,15 @@ public class User implements Serializable
 	{
 		return user_id;
 	}
+
+	/**
+	 * @param user_id the user_id to set
+	 */
+	public void setUser_id(int user_id) 
+	{
+		this.user_id = user_id;
+	}
+
 	/**
 	 * @return the first_name
 	 */
@@ -127,7 +119,7 @@ public class User implements Serializable
 	/**
 	 * @return the last_name
 	 */
-	public String getLast_name() 
+	public String getLast_name()
 	{
 		return last_name;
 	}
@@ -135,7 +127,7 @@ public class User implements Serializable
 	/**
 	 * @param last_name the last_name to set
 	 */
-	public void setLast_name(String last_name) 
+	public void setLast_name(String last_name)
 	{
 		this.last_name = last_name;
 	}
@@ -167,7 +159,7 @@ public class User implements Serializable
 	/**
 	 * @param username the username to set
 	 */
-	public void setUsername(String username)
+	public void setUsername(String username) 
 	{
 		this.username = username;
 	}
@@ -199,7 +191,7 @@ public class User implements Serializable
 	/**
 	 * @param address the address to set
 	 */
-	public void setAddress(String address) 
+	public void setAddress(String address)
 	{
 		this.address = address;
 	}
@@ -207,7 +199,8 @@ public class User implements Serializable
 	/**
 	 * @return the city
 	 */
-	public String getCity() {
+	public String getCity() 
+	{
 		return city;
 	}
 
@@ -236,20 +229,20 @@ public class User implements Serializable
 	}
 
 	/**
-	 * @return the roles
-	 *//*
-	public List<Roles> getRoles() 
+	 * @return the adminUser
+	 */
+	public boolean isAdminUser() 
 	{
-		return roles;
+		return adminUser;
 	}
 
-	*//**
-	 * @param roles the roles to set
-	 *//*
-	public void setRoles(List<Roles> roles)
+	/**
+	 * @param adminUser the adminUser to set
+	 */
+	public void setAdminUser(boolean adminUser) 
 	{
-		this.roles = roles;
-	}*/
+		this.adminUser = adminUser;
+	}
 
 	/**
 	 * @return the serialversionuid
@@ -258,17 +251,5 @@ public class User implements Serializable
 	{
 		return serialVersionUID;
 	}
-	/**
-	 * @return the adminUser
-	 */
-	public boolean isAdminUser() {
-		return adminUser;
-	}
-	/**
-	 * @param adminUser the adminUser to set
-	 */
-	public void setAdminUser(boolean adminUser) {
-		this.adminUser = adminUser;
-	}
-
+	
 }
