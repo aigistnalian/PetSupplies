@@ -6,21 +6,24 @@ import com.petstore.dao.AbstractDAO;
 import com.petstore.dao.RegistrationDAO;
 import com.petstore.model.bo.User;
 
+
 /**
- * @author analian
  *
- */
-public class RegistrationDAOImpl
-extends AbstractDAO<Integer, User> implements RegistrationDAO 
+ *
+ * @version $Id:$
+ * @author analian (c) Jul 24, 2015, Sogeti B.V.
+ */ 
+public class RegistrationDAOImpl extends AbstractDAO<Integer, User> implements RegistrationDAO
 {
-	/* (non-Javadoc)
-	 * @see com.petstore.dao.RegistrationDAO#registerNewUser(com.petstore.model.bo.User)
-	 */
-	@Override
-	@Transactional
-	public void registerNewUser(User user) 
-	{
-		entityManager.persist(user);
-	}
+   /*
+    * (non-Javadoc)
+    * @see com.petstore.dao.RegistrationDAO#registerNewUser(com.petstore.model.bo.User)
+    */
+   @Override
+   @Transactional
+   public void registerNewUser(User user)
+   {
+      entityManager.persist(user);
+   }
 
 }

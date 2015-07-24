@@ -5,11 +5,14 @@ package com.petstore.service;
 
 import com.petstore.model.bo.User;
 
+
 /**
- * @author analian
+ * ????
  *
- */
-public interface RegistrationService 
+ * @version $Id:$
+ * @author analian (c) Jul 24, 2015, Sogeti B.V.
+ */ 
+public interface RegistrationService
 {
-	void registerNewUser(User user);
+   void registerNewUser(User user);
 }

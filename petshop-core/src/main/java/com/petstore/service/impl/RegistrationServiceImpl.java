@@ -11,27 +11,32 @@ import com.petstore.dao.RegistrationDAO;
 import com.petstore.model.bo.User;
 import com.petstore.service.RegistrationService;
 
+
 /**
- * @author analian
+ * ????
  *
- */
+ * @version $Id:$
+ * @author analian (c) Jul 24, 2015, Sogeti B.V.
+ */ 
 @Stateless
-public class RegistrationServiceImpl implements RegistrationService 
+public class RegistrationServiceImpl implements RegistrationService
 {
-	/**
+   /**
 	 * 
 	 */
-	@Inject
-	RegistrationDAO registrationDAO;
+   @Inject
+   RegistrationDAO registrationDAO;
 
-	/* (non-Javadoc)
-	 * @see com.petstore.service.RegistrationService#registerNewUser(com.petstore.model.bo.User)
-	 */
-	@Override
-	@Transactional
-	public void registerNewUser(User user) {
-		
- 		registrationDAO.registerNewUser(user);
-	}
+   /*
+    * (non-Javadoc)
+    * @see com.petstore.service.RegistrationService#registerNewUser(com.petstore.model.bo.User)
+    */
+   @Override
+   @Transactional
+   public void registerNewUser(User user)
+   {
+
+      registrationDAO.registerNewUser(user);
+   }
 
 }
