@@ -14,8 +14,12 @@ import com.petstore.service.LoginService;
 import com.petstore.util.Util;
 
 /**
- * @author analian
- */
+ * Managed bean used to login and logout 
+ * by normal registered user.
+ *
+ * @version 1.0
+ * @author analian (c) Jul 24, 2015, Sogeti B.V.
+ */ 
 @ManagedBean(name = "userLogin")
 @SessionScoped
 public class UserLoginBean implements Serializable
@@ -35,6 +39,10 @@ public class UserLoginBean implements Serializable
    @Inject
    LoginService loginService;
 
+   /**
+    * Method used to validate the user credentials.
+    * @return
+    */
    public String validateUserLogin()
    {
       boolean result = loginService.validateUserLogin(userName, password);
@@ -75,10 +83,18 @@ public class UserLoginBean implements Serializable
     */
    private static final long serialVersionUID = 1L;
 
+   /**
+    * <code>userName</code> indicates/is used as user name for login.
+    */
    private String userName;
+   /**
+    * <code>password</code> indicates/is used as user password.
+    */
    private String password;
 
    /**
+    * Getter
+    * 
     * @return the userName
     */
    public String getUserName()
@@ -87,6 +103,8 @@ public class UserLoginBean implements Serializable
    }
 
    /**
+    * Setter
+    * 
     * @param userName the userName to set
     */
    public void setUserName(String userName)
@@ -95,6 +113,8 @@ public class UserLoginBean implements Serializable
    }
 
    /**
+    * Getter
+    * 
     * @return the password
     */
    public String getPassword()
@@ -103,6 +123,8 @@ public class UserLoginBean implements Serializable
    }
 
    /**
+    * Setter
+    * 
     * @param password the password to set
     */
    public void setPassword(String password)
@@ -111,6 +133,8 @@ public class UserLoginBean implements Serializable
    }
 
    /**
+    * Getter
+    * 
     * @return the serialversionuid
     */
    public static long getSerialversionuid()
@@ -119,6 +143,8 @@ public class UserLoginBean implements Serializable
    }
 
    /**
+    * getter
+    * 
     * @return the isRegisteredUser
     */
    public boolean isRegisteredUser()
@@ -127,6 +153,8 @@ public class UserLoginBean implements Serializable
    }
 
    /**
+    * Setter
+    * 
     * @param isRegisteredUser the isRegisteredUser to set
     */
    public void setRegisteredUser(boolean isRegisteredUser)
@@ -135,6 +163,8 @@ public class UserLoginBean implements Serializable
    }
 
    /**
+    * Getter
+    * 
     * @return the loginPage
     */
    public boolean isLoginPage()
@@ -143,6 +173,8 @@ public class UserLoginBean implements Serializable
    }
 
    /**
+    * Setter
+    * 
     * @param loginPage the loginPage to set
     */
    public void setLoginPage(boolean loginPage)

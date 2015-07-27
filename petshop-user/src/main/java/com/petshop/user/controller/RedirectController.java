@@ -7,11 +7,14 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import com.petshop.user.bean.UserLoginBean;
+import com.petstore.constants.Constants;
 
 /**
- * ????
+ * Controller class
+ * to redirect the user through various pages
+ * acts as listener for most of the methods by sidelinks.
  *
- * @version $Id:$
+ * @version 1.0
  * @author analian (c) Jul 24, 2015, Sogeti B.V.
  */
 @ManagedBean(name = "redirectController")
@@ -19,55 +22,63 @@ import com.petshop.user.bean.UserLoginBean;
 public class RedirectController implements Serializable
 {
 
+   /**
+    * <code>loginBean</code> indicates/is used 
+    * as a managed property by primefaces.
+    */
    @ManagedProperty(value = "#{userLogin}")
    UserLoginBean loginBean;
 
    public boolean showHomePageLink = false;
 
    /**
-    * Default value
+    * Default value generated for serializable class.
     */
    private static final long serialVersionUID = 1L;
 
-   /**
-    * @return
-    */
-   public String redirectToRegistrationPage()
-   {
-
-      showHomePageLink = false;
-      loginBean.setLoginPage(false);
-      return "landing";
-   }
 
    /**
+    * Method redirects the user to the basic landing page. 
+    * 
     * @return
     */
    public String redirectToHomePage()
    {
       showHomePageLink = false;
       loginBean.setLoginPage(false);
-      return "landing";
+      return Constants.LANDING_PAGE_STRING;
    }
 
    /**
+    * Method redirects the user to the login page
+    * 
     * @return
     */
    public String redirectToLoginPage()
    {
       showHomePageLink = false;
       loginBean.setLoginPage(true);
-      return "login";
+      return Constants.LOGIN_PAGE_STRING;
    }
 
+   /**
+    * Method redirects the user to
+    * the page where he can browse
+    * through the categories for 
+    * the different types of products.
+    * 
+    * @return
+    */
    public String redirectToBrowseProducts()
    {
       showHomePageLink = true;
       loginBean.setLoginPage(false);
-      return "browseProducts";
+      return Constants.BROWSE_PRODUCTS_STRING;
    }
 
    /**
+    * Getter
+    * 
     * @return the showHomePageLink
     */
    public boolean isShowHomePageLink()
@@ -76,6 +87,8 @@ public class RedirectController implements Serializable
    }
 
    /**
+    * Setter
+    * 
     * @param showHomePageLink the showHomePageLink to set
     */
    public void setShowHomePageLink(boolean showHomePageLink)
@@ -84,6 +97,8 @@ public class RedirectController implements Serializable
    }
 
    /**
+    * Getter
+    * 
     * @return the loginBean
     */
    public UserLoginBean getLoginBean()
@@ -92,6 +107,8 @@ public class RedirectController implements Serializable
    }
 
    /**
+    * Setter
+    * 
     * @param loginBean the loginBean to set
     */
    public void setLoginBean(UserLoginBean loginBean)

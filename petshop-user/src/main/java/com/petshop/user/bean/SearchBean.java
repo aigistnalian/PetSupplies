@@ -17,7 +17,9 @@ import com.petstore.model.bo.ProductCategory;
 import com.petstore.service.CategoryService;
 
 /**
- * @version $Id:$
+ * Class used as Managed Bean for rendering the various products under each category.
+ * 
+ * @version 1.0
  * @author analian (c) Jul 24, 2015, Sogeti B.V.
  */
 @ManagedBean(name = "searchBean")
@@ -30,20 +32,35 @@ public class SearchBean implements Serializable
     */
    private static final long serialVersionUID = 1L;
 
+   /**
+    * <code>categoryService</code> Injected service class.
+    */
    @Inject
    CategoryService categoryService;
 
+   /**
+    * <code>listOfCategories</code> list of categories
+    */
    private List<ProductCategory> listOfCategories = new ArrayList<ProductCategory>();
 
+   /**
+    * <code>categoryProductsMap</code> Mapping of each category with associated products.
+    */
    private Map<Integer, List<Product>> categoryProductsMap = new HashMap<Integer, List<Product>>();
 
+   /**
+    * <code>dataTableProducts</code> products shown on the data table.
+    */
    private List<Product> dataTableProducts = new ArrayList<Product>();
 
+   /**
+    * <code>category</code> selected category.
+    */
    private String category;
 
    /**
-	 * 
-	 */
+    * init method.
+    */
    @PostConstruct
    public void init()
    {
@@ -71,9 +88,11 @@ public class SearchBean implements Serializable
 
    }
 
+   /**
+    * make changes on the datatable based on the category selected.
+    */
    public void updateCategorySelected()
    {
-      System.out.println(category);
       dataTableProducts.clear();
       Integer selectedCategoryValue = Integer.valueOf(category);
       dataTableProducts.addAll(categoryProductsMap.get(selectedCategoryValue));

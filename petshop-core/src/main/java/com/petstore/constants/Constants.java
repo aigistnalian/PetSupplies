@@ -53,6 +53,8 @@ public final class Constants
 	
 	public static final String LOGIN_PAGE_STRING = "login";
 	
+	public static final String BROWSE_PRODUCTS_STRING = "browseProducts";
+	
 	public static final String INVALID_LINK_MESSAGE = "Invalid Link!";
 	
 	public static final String PLEASE_LOGIN_MESSAGE =  "Please Login!";

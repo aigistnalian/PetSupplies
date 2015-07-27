@@ -1,23 +1,51 @@
 package com.petshop.user.bean;
 
 /**
- * 
+ * Backing bean class for the form
+ * on registration page.
  *
- * @version $Id:$
+ * @version 1.0
  * @author analian (c) Jul 24, 2015, Sogeti B.V.
  */ 
 public class RegistrationForm
 {
 
+   /**
+    * <code>userId</code> indicates/is used for user id.
+    */
    private Integer userId;
 
+   /**
+    * <code>userName</code> indicates/is used for user name.
+    */
    private String userName;
+   /**
+    * <code>password</code> indicates/is used for password.
+    */
    private String password;
+   /**
+    * <code>firstName</code> indicates/is used for first name.
+    */
    private String firstName;
+   /**
+    * <code>lastName</code> indicates/is used for last name.
+    */
    private String lastName;
+   /**
+    * <code>email</code> indicates/is used for email id.
+    */
    private String email;
+   /**
+    * <code>address</code> indicates/is used for address.
+    */
    private String address;
+   /**
+    * <code>city</code> indicates/is used for city.
+    */
    private String city;
+   /**
+    * <code>pin</code> indicates/is used for pin code.
+    */
    private String pin;
 
    /**

@@ -13,16 +13,17 @@ import com.petstore.service.RegistrationService;
 
 
 /**
- * ????
+ * Service Class for Registration activities
  *
- * @version $Id:$
+ * @version 1
+ * 
  * @author analian (c) Jul 24, 2015, Sogeti B.V.
  */ 
 @Stateless
 public class RegistrationServiceImpl implements RegistrationService
 {
    /**
-	 * 
+	 * Injected DAO 
 	 */
    @Inject
    RegistrationDAO registrationDAO;

@@ -17,7 +17,10 @@ import com.petstore.model.bo.User;
 import com.petstore.service.RegistrationService;
 
 /**
- * @author analian
+ * Managed Bean class handling the registration activities for a new user.
+ *
+ * @version 1.0
+ * @author analian (c) Jul 23, 2015, Sogeti B.V.
  */
 @ManagedBean(name = "registrationBean")
 public class RegistrationBean implements Serializable
@@ -27,6 +30,9 @@ public class RegistrationBean implements Serializable
     */
    private static final long serialVersionUID = 1L;
 
+   /**
+    * <code>registrationService</code> Injected service class.
+    */
    @Inject
    RegistrationService registrationService;
 
@@ -36,6 +42,8 @@ public class RegistrationBean implements Serializable
    private RegistrationForm registrationForm = null;
 
    /**
+    * main method called for registering.
+    * 
     * @return
     */
    public String register()
@@ -47,6 +55,8 @@ public class RegistrationBean implements Serializable
    }
 
    /**
+    * Mapping method.
+    * 
     * @param registrationForm2
     * @return
     */
@@ -65,6 +75,8 @@ public class RegistrationBean implements Serializable
    }
 
    /**
+    * Method called on trigger for tab change event
+    * 
     * @param event
     */
    public void onTabChange(TabChangeEvent event)
@@ -74,7 +86,9 @@ public class RegistrationBean implements Serializable
    }
 
    /**
-    * @return the registrationForm
+    * Returns the backing bean.
+    * 
+    * @return
     */
    public RegistrationForm getRegistrationForm()
    {

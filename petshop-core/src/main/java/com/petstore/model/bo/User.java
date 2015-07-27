@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.petstore.model.bo;
 
 import java.io.Serializable;
@@ -14,6 +11,9 @@ import javax.persistence.Table;
 
 /**
  * User details.
+ * 
+ * Added is_admin to check for role instead of 
+ * having separate two tables.
  * 
  * @author analian
  */
