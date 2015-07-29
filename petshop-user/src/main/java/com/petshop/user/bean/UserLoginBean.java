@@ -9,27 +9,41 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.petstore.constants.Constants;
 import com.petstore.service.LoginService;
 import com.petstore.util.Util;
 
 /**
- * Managed bean used to login and logout 
- * by normal registered user.
+ * Managed bean used to login and logout by normal registered user.
  *
  * @version 1.0
  * @author analian (c) Jul 24, 2015, Sogeti B.V.
- */ 
+ */
 @ManagedBean(name = "userLogin")
 @SessionScoped
 public class UserLoginBean implements Serializable
 {
+
+   final static Logger log = Logger.getLogger(UserLoginBean.class);
+
+   /**
+    * <code>isRegisteredUser</code> indicates/is used for.
+    */
    public boolean isRegisteredUser;
 
+   /**
+    * <code>loginPage</code> indicates/is used for.
+    */
    public boolean loginPage = true;
 
+   /**
+    * Constructor: create a new UserLoginBean.
+    */
    public UserLoginBean()
    {
+      log.debug("Created a new User Login Bean class");
       userName = Constants.GUEST;
    }
 
@@ -41,10 +55,13 @@ public class UserLoginBean implements Serializable
 
    /**
     * Method used to validate the user credentials.
+    * 
     * @return
     */
    public String validateUserLogin()
    {
+      log.debug("Validating the user logins");
+
       boolean result = loginService.validateUserLogin(userName, password);
       if (result)
       {
@@ -56,11 +73,13 @@ public class UserLoginBean implements Serializable
       }
       else
       {
+         log.error("User is not valid");
          isRegisteredUser = false;
          FacesContext.getCurrentInstance().addMessage(null, 
-               new FacesMessage(FacesMessage.SEVERITY_WARN, Constants.INVALID_LOGIN_MESSAGE, Constants.PLEASE_REGISTER_MESSAGE));
+               new FacesMessage(FacesMessage.SEVERITY_WARN,
+                                 Constants.INVALID_LOGIN_MESSAGE, Constants.PLEASE_REGISTER_MESSAGE));
+         log.trace("Returning to the login page");
 
-         // invalidate session, and redirect to other pages
          return Constants.LOGIN_PAGE_STRING;
       }
    }
@@ -72,6 +91,7 @@ public class UserLoginBean implements Serializable
     */
    public String logout()
    {
+      log.debug("logout method for the user");
       HttpSession session = Util.getSession();
       session.invalidate();
       isRegisteredUser = false;

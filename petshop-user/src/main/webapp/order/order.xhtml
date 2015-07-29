@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
+	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="content">
+			<div id="imageDiv" class="content">
+				<h:form id="orderForm">
+				<p:spacer height="24"></p:spacer>
+					<p:dataTable id="ordersTable" 
+						value="#{shoppingCartBean.cart.values()}" var="cart" editMode="row"  editable="true"
+					scrollHeight="80" scrollable="true" style="width: 860px;" scrollRows="2"  rowKey="#{cart.productId}" >
+				<p:ajax event="rowEdit" listener="#{shoppingCartController.updateCartDetails}"
+							update=":orderForm:ordersTable" />
+						<p:ajax event="rowEditCancel"
+							listener="#{shoppingCartController.deleteCartItem}"
+							update=":orderForm:ordersTable" />
+					<f:facet name="header">  
+                        Product In Your Shopping Cart
+                        </f:facet>
+                        
+                        	<p:column headerText="Product">
+                        	<h:outputText value="#{cart.productName}"/>
+                        	</p:column>
+                        	
+                        	  <p:column>
+							<f:facet name="header">
+								<h:outputText value="Quantity" />
+							</f:facet>
+							<p:cellEditor>
+								<f:facet name="output">
+									<h:outputText value="#{cart.quantity}" />
+								</f:facet>
+								<f:facet name="input">
+									<p:inputText value="#{cart.quantity}" />
+								</f:facet>
+							</p:cellEditor>
+						</p:column>
+						
+						  <p:column>
+							<f:facet name="header">
+								<h:outputText value="Price Per Product" />
+							</f:facet>
+							<h:outputText value="#{cart.pricePerProduct}"/>
+						</p:column>
+                        	<p:column headerText="Total Price">
+                        	<h:outputText value="#{cart.totalPrice}"/>
+                        	</p:column>
+                        	
+                        	<p:column headerText="Options">
+							<p:rowEditor />
+						</p:column>
+
+					</p:dataTable>
+					
+				<p:spacer height="43"></p:spacer>
+				
+				<p:commandButton value="Confirm Order" actionListener="#{shoppingCartController.confirmOrder}"></p:commandButton>
+				
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

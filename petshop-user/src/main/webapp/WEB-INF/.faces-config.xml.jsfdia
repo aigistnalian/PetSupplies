@@ -34,4 +34,13 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#views#browse.xhtml"
   PATH="/views/browse.xhtml" SHAPE="240,289,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#*:2" PATH="/*" SHAPE="32,273,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:2" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="orders::#order#order.xhtml" NAME="output"
+    PATH="/order/order.xhtml" TARGET="rules:#order#order.xhtml"
+    TITLE="orders" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#order#order.xhtml" PATH="/order/order.xhtml"
+  SHAPE="240,401,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

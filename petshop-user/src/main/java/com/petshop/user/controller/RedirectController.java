@@ -6,6 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.log4j.Logger;
+
 import com.petshop.user.bean.UserLoginBean;
 import com.petstore.constants.Constants;
 
@@ -22,6 +24,7 @@ import com.petstore.constants.Constants;
 public class RedirectController implements Serializable
 {
 
+   final static Logger log = Logger.getLogger(RedirectController.class);
    /**
     * <code>loginBean</code> indicates/is used 
     * as a managed property by primefaces.
@@ -44,6 +47,7 @@ public class RedirectController implements Serializable
     */
    public String redirectToHomePage()
    {
+      log.debug("redirecting the user to the home landing page");
       showHomePageLink = false;
       loginBean.setLoginPage(false);
       return Constants.LANDING_PAGE_STRING;
@@ -56,6 +60,7 @@ public class RedirectController implements Serializable
     */
    public String redirectToLoginPage()
    {
+      log.debug("redirecting the user to the login page");
       showHomePageLink = false;
       loginBean.setLoginPage(true);
       return Constants.LOGIN_PAGE_STRING;
@@ -71,6 +76,7 @@ public class RedirectController implements Serializable
     */
    public String redirectToBrowseProducts()
    {
+      log.debug("redirecting the user to the product browsing page");
       showHomePageLink = true;
       loginBean.setLoginPage(false);
       return Constants.BROWSE_PRODUCTS_STRING;
@@ -83,6 +89,7 @@ public class RedirectController implements Serializable
     */
    public boolean isShowHomePageLink()
    {
+      log.debug("boolean method for showing/hiding the home page link");
       return showHomePageLink;
    }
 

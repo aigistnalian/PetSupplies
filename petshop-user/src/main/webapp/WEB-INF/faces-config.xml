@@ -27,6 +27,16 @@
         </navigation-case>
     </navigation-rule>
     
+         <navigation-rule>
+  <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>orders</from-outcome>
+            <to-view-id>/order/order.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    
     <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
@@ -34,4 +44,6 @@
             <to-view-id>/user/userRegistration.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    
 </faces-config>

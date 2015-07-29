@@ -12,6 +12,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
+import org.apache.log4j.Logger;
+
 import com.petstore.model.bo.Product;
 import com.petstore.model.bo.ProductCategory;
 import com.petstore.service.CategoryService;
@@ -27,6 +29,7 @@ import com.petstore.service.CategoryService;
 public class SearchBean implements Serializable
 {
 
+   final static Logger log = Logger.getLogger(SearchBean.class);
    /**
     * Default value
     */
@@ -57,6 +60,7 @@ public class SearchBean implements Serializable
     * <code>category</code> selected category.
     */
    private String category;
+   
 
    /**
     * init method.
@@ -64,6 +68,7 @@ public class SearchBean implements Serializable
    @PostConstruct
    public void init()
    {
+      log.trace("Post construct - init method");
       listOfCategories = categoryService.findAllCategories();
 
       if (listOfCategories != null && !listOfCategories.isEmpty())
@@ -71,7 +76,7 @@ public class SearchBean implements Serializable
 
          for (ProductCategory productCategory : listOfCategories)
          {
-
+            log.info("each product category" + productCategory);
             Collection<Product> products = productCategory.getProducts();
             List<Product> productsList = new ArrayList<Product>();
 

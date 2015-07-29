@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import org.apache.log4j.Logger;
 import org.primefaces.event.TabChangeEvent;
 
 import com.petstore.constants.Constants;
@@ -25,6 +26,12 @@ import com.petstore.service.RegistrationService;
 @ManagedBean(name = "registrationBean")
 public class RegistrationBean implements Serializable
 {
+   
+   /**
+    * Logger for RegistrationBean class
+    */
+   final static Logger log = Logger.getLogger(RegistrationBean.class);
+   
    /**
     * Default value
     */
@@ -48,7 +55,7 @@ public class RegistrationBean implements Serializable
     */
    public String register()
    {
-      System.out.println("Registered" + registrationForm.getUserName());
+      log.debug("Registered" + registrationForm.getUserName());
       User user = mapRegistrationFormToUser(registrationForm);
       registrationService.registerNewUser(user);
       return Constants.LOGIN_PAGE_STRING;
@@ -62,6 +69,7 @@ public class RegistrationBean implements Serializable
     */
    private User mapRegistrationFormToUser(RegistrationForm regForm)
    {
+      log.trace("Inside the mapper method for registration");
       User mappedUser = new User();
       mappedUser.setAddress(regForm.getAddress());
       mappedUser.setCity(regForm.getCity());
@@ -81,6 +89,7 @@ public class RegistrationBean implements Serializable
     */
    public void onTabChange(TabChangeEvent event)
    {
+      log.trace("Tab change method called.");
       FacesMessage msg = new FacesMessage(Constants.ENTERING_DETAILS_MESSAGE, "Active Tab: " + event.getTab().getTitle());
       FacesContext.getCurrentInstance().addMessage(null, msg);
    }
@@ -92,6 +101,7 @@ public class RegistrationBean implements Serializable
     */
    public RegistrationForm getRegistrationForm()
    {
+      log.info("getter for the form object - registration");
       if (this.registrationForm == null)
       {
          this.registrationForm = new RegistrationForm();

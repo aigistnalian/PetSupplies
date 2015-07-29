@@ -14,27 +14,31 @@
 	<ui:composition template="/WEB-INF/templates/template.xhtml">
 		<ui:define name="content">
 			<div id="imageDiv" class="content">
-			<h:form id="browseForm">
-				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-					<p:outputLabel for="category" value="Category: " />
-					
-					<p:selectOneMenu id="category" value="#{searchBean.category}"
-						style="width:125px">
-						<p:ajax listener="#{searchBean.updateCategorySelected}"
-							update="categoryProducts" />
-						<f:selectItem itemLabel="Select Category" itemValue=""
-							noSelectionOption="true" />
-						<f:selectItems value="#{searchBean.listOfCategories}" var="entry"
-							itemLabel="#{entry.name}" itemValue="#{entry.id}" />
-					</p:selectOneMenu>
-				</h:panelGrid>
-				
-				<p:dataTable value="#{searchBean.dataTableProducts}" var="prod" id="categoryProducts"
-						style="width: 860px;" scrollable="true" scrollHeight="80" scrollRows="2">
+				<h:form id="browseForm">
+				<p:growl id="msg" showDetail="true" life="3000" />	
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="category" value="Category: " />
+
+						<p:selectOneMenu id="category" value="#{searchBean.category}"
+							style="width:125px">
+							<p:ajax listener="#{searchBean.updateCategorySelected}"
+								update="categoryProducts" />
+							<f:selectItem itemLabel="Select Category" itemValue=""
+								noSelectionOption="true" />
+							<f:selectItems value="#{searchBean.listOfCategories}" var="entry"
+								itemLabel="#{entry.name}" itemValue="#{entry.id}" />
+						</p:selectOneMenu>
+					</h:panelGrid>
+
+					<p:dataTable value="#{searchBean.dataTableProducts}" var="prod" selection="#{shoppingCartBean.addedToCartProducts}"
+						id="categoryProducts" rowKey="#{prod.id}" style="width: 860px;"
+						scrollable="true" scrollHeight="80" scrollRows="2" rowSelectMode="add"
+						rowIndexVar="rowIndex">
 						<f:facet name="header">  
                         Product In this Category  
                         </f:facet>
-
+						<p:column selectionMode="multiple"
+							style="width:16px;text-align:center" />
 						<p:column headerText="Name">
 							<h:outputText value="#{prod.name}" />
 						</p:column>
@@ -42,11 +46,18 @@
 						<p:column headerText="Description">
 							<h:outputText value="#{prod.description}" />
 						</p:column>
-						
+
 						<p:column headerText="Price">
 							<h:outputText value="#{prod.price}" />
 						</p:column>
+
+						<f:facet name="footer">
+							<p:commandButton process="categoryProducts" actionListener="#{shoppingCartBean.addProductsToCart}"
+								 icon="ui-icon-search" value="Add to Shopping Cart" />
+						</f:facet>
 					</p:dataTable>
+
+
 				</h:form>
 			</div>
 		</ui:define>
