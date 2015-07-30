@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.petstore.constants.Constants;
+import com.petstore.model.bo.User;
 import com.petstore.service.LoginService;
 import com.petstore.util.Util;
 
@@ -37,6 +38,10 @@ public class UserLoginBean implements Serializable
     * <code>loginPage</code> indicates/is used for.
     */
    public boolean loginPage = true;
+
+   private User user;
+   
+   
 
    /**
     * Constructor: create a new UserLoginBean.
@@ -202,4 +207,21 @@ public class UserLoginBean implements Serializable
       this.loginPage = loginPage;
    }
 
+   /**
+    * Getter
+    * @return
+    */
+   public User getUser()
+   {
+      return user;
+   }
+
+   /**
+    * Setter
+    * @param user
+    */
+   public void setUser(User user)
+   {
+      this.user = user;
+   }
 }

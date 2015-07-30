@@ -52,12 +52,12 @@
 						</p:column>
 
 						<f:facet name="footer">
-							<p:commandButton process="categoryProducts" actionListener="#{shoppingCartBean.addProductsToCart}"
-								 icon="ui-icon-search" value="Add to Shopping Cart" />
+							<p:commandButton process="categoryProducts" actionListener="#{shoppingCartBean.addProductsToCart}" 
+								 icon="ui-icon-cart" value="Add to Cart"  />
 						</f:facet>
 					</p:dataTable>
 
-
+					<h:commandButton value="View Shopping Cart" action="#{redirectController.redirectToOrderPage }" />
 				</h:form>
 			</div>
 		</ui:define>

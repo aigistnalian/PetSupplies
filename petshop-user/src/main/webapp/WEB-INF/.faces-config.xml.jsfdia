@@ -4,12 +4,6 @@
   SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
    PATH="/login.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="landing::#views#landing.xhtml" NAME="output"
-    PATH="/views/landing.xhtml" TARGET="rules:#views#landing.xhtml"
-    TITLE="landing" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
-  <PROCESS-ITEM ID="rules:#login.xhtml:1" NAME="item1"
-   PATH="/login.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="register::#user#userRegistration.xhtml"
     NAME="output" PATH="/user/userRegistration.xhtml"
     TARGET="rules:#user#userRegistration.xhtml" TITLE="register" model-entity="JSFProcessItemOutput"/>
@@ -17,8 +11,9 @@
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#*" PATH="/*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#*:0" NAME="item" PATH="/*" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
-    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="landing::#views#landing.xhtml" NAME="output"
+    PATH="/views/landing.xhtml" TARGET="rules:#views#landing.xhtml"
+    TITLE="landing" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#views#landing.xhtml"
@@ -27,20 +22,37 @@
   PATH="/user/userRegistration.xhtml" SHAPE="464,161,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#*:1" PATH="/*" SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#*:1" NAME="item" PATH="/*" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="browseProducts::#views#browse.xhtml"
-    NAME="output" PATH="/views/browse.xhtml"
-    TARGET="rules:#views#browse.xhtml" TITLE="browseProducts" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#views#browse.xhtml"
   PATH="/views/browse.xhtml" SHAPE="240,289,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#*:2" PATH="/*" SHAPE="32,273,0,0" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#*:2" NAME="item" PATH="/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="browseProducts::#views#browse.xhtml"
+    NAME="output" PATH="/views/browse.xhtml"
+    TARGET="rules:#views#browse.xhtml" TITLE="browseProducts" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#order#order.xhtml" PATH="/order/order.xhtml"
+  SHAPE="240,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#order#order.xhtml:0" NAME="item"
+   PATH="/order/order.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="orderConfirmation::#order#orderConfirmation.xhtml" NAME="output"
+    PATH="/order/orderConfirmation.xhtml"
+    TARGET="rules:#order#orderConfirmation.xhtml"
+    TITLE="orderConfirmation" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#*:3" PATH="/*" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#*:3" NAME="item" PATH="/*" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="orders::#order#order.xhtml" NAME="output"
     PATH="/order/order.xhtml" TARGET="rules:#order#order.xhtml"
     TITLE="orders" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#order#order.xhtml" PATH="/order/order.xhtml"
-  SHAPE="240,401,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#order#orderConfirmation.xhtml"
+  PATH="/order/orderConfirmation.xhtml" SHAPE="448,353,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

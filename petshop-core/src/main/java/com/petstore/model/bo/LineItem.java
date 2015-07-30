@@ -5,9 +5,14 @@ package com.petstore.model.bo;
 
 import java.io.Serializable;
 
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,6 +33,7 @@ public class LineItem implements Serializable
 	 */
 	@Id
 	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	/**
 	 * ORDER ID column
@@ -50,6 +56,15 @@ public class LineItem implements Serializable
 	@Column(name="NO_OF_PRODUCTS")
 	private int no_of_products;
 
+	
+	/**
+    * order.
+    */
+   @ManyToOne
+   @JoinColumn(name = "order_id",referencedColumnName="order_id",
+            insertable=false,updatable=false)
+   private Orders order;
+	
 	/**
 	 * Getter
 	 * *@return Getter for the id
@@ -130,6 +145,36 @@ public class LineItem implements Serializable
 	{
 		this.no_of_products = no_of_products;
 	}
+
+   /**
+    * Get the order.
+    *
+    * @return Returns the order as a Orders.
+    */
+   public Orders getOrder()
+   {
+      return order;
+   }
+
+   /**
+    * Set the order to the specified value.
+    *
+    * @param order The order to set.
+    */
+   public void setOrder(Orders order)
+   {
+      this.order = order;
+   }
+
+   /**
+    * Get the serialversionuid.
+    *
+    * @return Returns the serialversionuid as a long.
+    */
+   public static long getSerialversionuid()
+   {
+      return serialVersionUID;
+   }
 	
 	
 

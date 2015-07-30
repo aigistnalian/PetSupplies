@@ -12,6 +12,8 @@
 			<class>com.petstore.model.bo.User</class>
 			<class>com.petstore.model.bo.Product</class> 
 			<class>com.petstore.model.bo.ProductCategory</class> 
+			<class>com.petstore.model.bo.LineItem</class> 
+			<class>com.petstore.model.bo.Orders</class> 
 			<properties> 
 			  <property name="hibernate.hbm2ddl.auto" value="update"/>
       <property name="hibernate.show_sql" value="true"/>

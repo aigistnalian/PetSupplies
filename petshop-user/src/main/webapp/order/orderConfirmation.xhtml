@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputScript name="jquery/jquery.js" library="primefaces"></h:outputScript>
+	<h:outputStylesheet name="style.css" library="css"></h:outputStylesheet>
+</h:head>
+<h:body>
+	<ui:composition template="/WEB-INF/templates/template.xhtml">
+		<ui:define name="content">
+			<div id="imageDiv" class="content">
+				<h:form id="orderConfirmationForm">
+				<p:growl id="msg" life="1232" showDetail="true"></p:growl>
+					<p:spacer height="12"></p:spacer>
+					<p:panel header="Your Billing Details" footer="Please Cofirm Details before placing your Order!" style="width:800px;">
+					<p:panelGrid columns="2" style="width:740px;">
+
+						<p:outputLabel value="User Name" for="userName" />
+						<p:inputText value="#{shoppingCartController.user.username}"
+							id="userName" required="true"
+							requiredMessage="UserName is required"
+							validatorMessage="UserName should be of length from 5 to 15 chars">
+							<f:validateLength minimum="5" maximum="15" for="userName"></f:validateLength>
+						</p:inputText>
+
+						<p:outputLabel value="Address" for="address" />
+						<p:inputTextarea value="#{shoppingCartController.user.address}"
+							id="address" required="true" rows="3" cols="30" maxlength="50"
+							autoResize="false" requiredMessage="Address is required">
+						</p:inputTextarea>
+
+
+						<p:outputLabel value="City" for="city" />
+						<p:inputText value="#{shoppingCartController.user.city}" id="city"
+							required="true" requiredMessage="Last Name is required"
+							validatorMessage="City should be of length from 5 to 25 chars">
+							<f:validateLength minimum="5" maximum="25" for="city"></f:validateLength>
+						</p:inputText>
+
+						<p:outputLabel value="Pin" for="pin" />
+						<p:inputText value="#{shoppingCartController.user.pin}" id="pin"
+							required="true" requiredMessage="Pin is required"
+							validatorMessage="Pin should be of length from 5 to 8 chars">
+							<f:validateLength minimum="5" maximum="8" for="pin"></f:validateLength>
+						</p:inputText>
+					</p:panelGrid>
+					</p:panel>
+					
+					<p:commandButton icon="ui-icon-home" value="Place Order" ajax="false" 
+						actionListener="#{shoppingCartController.placeOrder}"></p:commandButton>
+					
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

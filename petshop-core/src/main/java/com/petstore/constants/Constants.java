@@ -61,4 +61,6 @@ public final class Constants
 	
 	public static final String LOGIN_REDIRECT_STRING = "/login?faces-redirect=true" ;
 	
+   public static final String ORDER_PAGE_STRING = "orders";
+	
 }

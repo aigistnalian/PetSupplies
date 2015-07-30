@@ -15,7 +15,11 @@
 		<ui:define name="content">
 			<div id="imageDiv" class="content">
 				<h:form id="orderForm">
-				<p:spacer height="24"></p:spacer>
+					<h1 class="PropertyTopic boldFont"> Your Shopping Cart </h1>
+					<p:spacer height="24"></p:spacer>
+					
+					<p:growl id="messages" life="2242" showDetail="true"></p:growl>
+					
 					<p:dataTable id="ordersTable" 
 						value="#{shoppingCartBean.cart.values()}" var="cart" editMode="row"  editable="true"
 					scrollHeight="80" scrollable="true" style="width: 860px;" scrollRows="2"  rowKey="#{cart.productId}" >
@@ -41,7 +45,10 @@
 									<h:outputText value="#{cart.quantity}" />
 								</f:facet>
 								<f:facet name="input">
-									<p:inputText value="#{cart.quantity}" />
+									<p:inputText id ="quantity" value="#{cart.quantity}"  required="true">
+										<f:validateLength minimum="1" for="quantity"></f:validateLength>
+										<f:validateDoubleRange for="quantity" minimum="1.0" ></f:validateDoubleRange>
+									</p:inputText>
 								</f:facet>
 							</p:cellEditor>
 						</p:column>
@@ -59,14 +66,15 @@
                         	<p:column headerText="Options">
 							<p:rowEditor />
 						</p:column>
-
 					</p:dataTable>
 					
 				<p:spacer height="43"></p:spacer>
 				
-				<p:commandButton value="Confirm Order" actionListener="#{shoppingCartController.confirmOrder}"></p:commandButton>
+				<p:commandButton icon="ui-icon-check" rendered="#{shoppingCartBean.cart.size() > 0}" 
+				value="Confirm Order" action="#{shoppingCartController.confirmOrder}"></p:commandButton>
+			
+					</h:form>
 				
-				</h:form>
 			</div>
 		</ui:define>
 	</ui:composition>

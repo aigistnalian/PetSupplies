@@ -1,13 +1,20 @@
 package com.petstore.model.bo;
 
 import java.io.Serializable;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /**
  * User details.
@@ -77,6 +84,10 @@ public class User implements Serializable
 
    @Column(name = "IS_ADMIN")
    private boolean adminUser;
+   
+   @OneToMany(cascade=CascadeType.ALL, mappedBy="user",fetch=FetchType.EAGER)
+   @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<Orders> orders;
 
    /**
     * @return the user_id
@@ -244,6 +255,26 @@ public class User implements Serializable
    public static long getSerialversionuid()
    {
       return serialVersionUID;
+   }
+
+   /**
+    * Get the orders.
+    *
+    * @return Returns the orders as a Set<Orders>.
+    */
+   public Set<Orders> getOrders()
+   {
+      return orders;
+   }
+
+   /**
+    * Set the orders to the specified value.
+    *
+    * @param orders The orders to set.
+    */
+   public void setOrders(Set<Orders> orders)
+   {
+      this.orders = orders;
    }
 
 }

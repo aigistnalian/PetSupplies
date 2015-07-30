@@ -32,7 +32,10 @@ public class LoginServiceImpl implements LoginService
 	@Inject
 	UserDAO userDAO;
 	
-	/* (non-Javadoc)
+	public User userObj;
+	
+	
+   /* (non-Javadoc)
 	 * @see com.petstore.service.LoginService#validateAdminUserLogin(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -67,8 +70,31 @@ public class LoginServiceImpl implements LoginService
 			{
 				isUserValid = true;
 			}
+			
+			setUserObj(user);
 		}
 		log.debug("returning after login -->"+ isUserValid);
 		return isUserValid;
 	}
+	
+	/**
+    * Get the userObj.
+    *
+    * @return Returns the userObj as a User.
+    */
+   public User getUserObj()
+   {
+      return userObj;
+   }
+
+   /**
+    * Set the userObj to the specified value.
+    *
+    * @param userObj The userObj to set.
+    */
+   public void setUserObj(User userObj)
+   {
+      this.userObj = userObj;
+   }
+
 }

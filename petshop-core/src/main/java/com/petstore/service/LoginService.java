@@ -1,5 +1,7 @@
 package com.petstore.service;
 
+import com.petstore.model.bo.User;
+
 
 /**
  * Interface for the Service layer
@@ -27,4 +29,5 @@ public interface LoginService
 	 */
 	boolean validateUserLogin(String userName, String password);
 	
+	User getUserObj();
 }

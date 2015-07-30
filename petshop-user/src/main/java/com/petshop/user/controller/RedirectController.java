@@ -12,9 +12,7 @@ import com.petshop.user.bean.UserLoginBean;
 import com.petstore.constants.Constants;
 
 /**
- * Controller class
- * to redirect the user through various pages
- * acts as listener for most of the methods by sidelinks.
+ * Controller class to redirect the user through various pages acts as listener for most of the methods by sidelinks.
  *
  * @version 1.0
  * @author analian (c) Jul 24, 2015, Sogeti B.V.
@@ -26,8 +24,7 @@ public class RedirectController implements Serializable
 
    final static Logger log = Logger.getLogger(RedirectController.class);
    /**
-    * <code>loginBean</code> indicates/is used 
-    * as a managed property by primefaces.
+    * <code>loginBean</code> indicates/is used as a managed property by primefaces.
     */
    @ManagedProperty(value = "#{userLogin}")
    UserLoginBean loginBean;
@@ -39,9 +36,20 @@ public class RedirectController implements Serializable
     */
    private static final long serialVersionUID = 1L;
 
+   /**
+    * Method to Redirect the User to the Orders Page.
+    * @return
+    */
+   public String redirectToOrderPage()
+   {
+      showHomePageLink = true;
+      loginBean.setLoginPage(false);
+
+      return Constants.ORDER_PAGE_STRING;
+   }
 
    /**
-    * Method redirects the user to the basic landing page. 
+    * Method redirects the user to the basic landing page.
     * 
     * @return
     */
@@ -67,10 +75,7 @@ public class RedirectController implements Serializable
    }
 
    /**
-    * Method redirects the user to
-    * the page where he can browse
-    * through the categories for 
-    * the different types of products.
+    * Method redirects the user to the page where he can browse through the categories for the different types of products.
     * 
     * @return
     */

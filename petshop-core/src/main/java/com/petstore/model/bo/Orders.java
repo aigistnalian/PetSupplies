@@ -3,14 +3,24 @@
  */
 package com.petstore.model.bo;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 /**
  * Order table to track the user orders
@@ -21,10 +31,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="ORDERS")
-public class Orders 
+public class Orders implements Serializable
 {
 
 	/**
+    * <code>serialVersionUID</code> indicates/is used for.
+    */
+   private static final long serialVersionUID = -6292688702395346389L;
+   /**
 	 * ID Column
 	 */
 	@Id
@@ -34,6 +48,7 @@ public class Orders
 	 * Order ID
 	 */
 	@Column(name="ORDER_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String order_id;
 	/**
 	 * user id
@@ -65,6 +80,18 @@ public class Orders
 	 */
 	@Column(name="PIN")
 	private String pin;
+	
+	/**
+    * order.
+    */
+   @ManyToOne
+   @JoinColumn( referencedColumnName="ID",name="user_id",
+            insertable=false,updatable=false)
+   private User user;
+
+   @OneToMany(cascade=CascadeType.ALL, mappedBy="order",fetch=FetchType.EAGER)
+   @OnDelete(action = OnDeleteAction.CASCADE)
+    private Set<LineItem> lineItems;
 
 	/**
 	 * *@return Getter for the id
@@ -193,6 +220,46 @@ public class Orders
 	{
 		this.pin = pin;
 	}
+
+   /**
+    * Get the user.
+    *
+    * @return Returns the user as a User.
+    */
+   public User getUser()
+   {
+      return user;
+   }
+
+   /**
+    * Set the user to the specified value.
+    *
+    * @param user The user to set.
+    */
+   public void setUser(User user)
+   {
+      this.user = user;
+   }
+
+   /**
+    * Get the lineItems.
+    *
+    * @return Returns the lineItems as a Set<LineItem>.
+    */
+   public Set<LineItem> getLineItems()
+   {
+      return lineItems;
+   }
+
+   /**
+    * Set the lineItems to the specified value.
+    *
+    * @param lineItems The lineItems to set.
+    */
+   public void setLineItems(Set<LineItem> lineItems)
+   {
+      this.lineItems = lineItems;
+   }
 	
 	
 }
