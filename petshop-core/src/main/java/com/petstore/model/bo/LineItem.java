@@ -5,13 +5,11 @@ package com.petstore.model.bo;
 
 import java.io.Serializable;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -35,11 +33,7 @@ public class LineItem implements Serializable
 	@Column(name="ID")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	/**
-	 * ORDER ID column
-	 */
-	@Column(name="ORDER_ID")
-	private int order_id;
+	
 	/**
 	 * PRODUCT ID column
 	 */
@@ -60,9 +54,7 @@ public class LineItem implements Serializable
 	/**
     * order.
     */
-   @ManyToOne
-   @JoinColumn(name = "order_id",referencedColumnName="order_id",
-            insertable=false,updatable=false)
+   @ManyToOne(targetEntity=Orders.class)
    private Orders order;
 	
 	/**
@@ -80,22 +72,6 @@ public class LineItem implements Serializable
 	public void setId(int id) 
 	{
 		this.id = id;
-	}
-
-	/**
-	 * *@return Getter for the order_id
-	 */
-	public int getOrder_id() 
-	{
-		return order_id;
-	}
-
-	/**
-	 * @param order_id the order_id to set
-	 */
-	public void setOrder_id(int order_id)
-	{
-		this.order_id = order_id;
 	}
 
 	/**
@@ -175,7 +151,6 @@ public class LineItem implements Serializable
    {
       return serialVersionUID;
    }
-	
-	
+
 
 }

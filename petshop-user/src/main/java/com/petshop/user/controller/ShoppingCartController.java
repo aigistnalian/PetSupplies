@@ -2,11 +2,11 @@ package com.petshop.user.controller;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -19,6 +19,7 @@ import org.primefaces.event.RowEditEvent;
 import com.petshop.user.bean.ShoppingCartBean;
 import com.petshop.user.bean.ShoppingCartForm;
 import com.petshop.user.bean.UserLoginBean;
+import com.petstore.constants.Constants;
 import com.petstore.model.bo.LineItem;
 import com.petstore.model.bo.Orders;
 import com.petstore.model.bo.User;
@@ -75,7 +76,8 @@ public class ShoppingCartController implements Serializable
    ShoppingCartBean bean;
 
    /**
-    * Method that handles the update on the shopping cart - single product row. Handles the change in the no of products.
+    * Method that handles the update on the shopping cart - 
+    * single product row. Handles the change in the no of products.
     * 
     * @param editEvent
     */
@@ -113,7 +115,7 @@ public class ShoppingCartController implements Serializable
          setUser(new User());
       }
       
-      return "orderConfirmation";
+      return Constants.ORDER_CONFIRMATION_PAGE_STRING;
    }
 
    /**
@@ -124,8 +126,25 @@ public class ShoppingCartController implements Serializable
    public String placeOrder()
    {
       Map<Integer, ShoppingCartForm> cart = bean.getCart();
-      Set<LineItem> lineItemsSet = new HashSet<LineItem>();
-     
+      List<LineItem> lineItemsSet = new ArrayList<LineItem>();
+      
+      Orders order = createNewOrderObject(cart, lineItemsSet);
+      shoppingCartService.saveNewOrder(order);
+      return null;
+   }
+
+   /**
+    *  Refactored private method
+    *  to create the order object for the user.
+    *  
+    * @param cart
+    * @param lineItemsSet
+    * @return
+    */
+   private Orders createNewOrderObject(Map<Integer, ShoppingCartForm> cart, List<LineItem> lineItemsSet)
+   {
+      Orders order = new Orders();
+      
       for (Entry<Integer, ShoppingCartForm> entry : cart.entrySet())
       {
          ShoppingCartForm cartItem = entry.getValue();
@@ -133,20 +152,18 @@ public class ShoppingCartController implements Serializable
          item.setAmount(cartItem.getTotalPrice().intValueExact());
          item.setNo_of_products(cartItem.getQuantity());
          item.setProduct_id(cartItem.getProductId());
+         item.setOrder(order);
          lineItemsSet.add(item);
       }
       
-      Orders order = new Orders();
       order.setCity(getUser().getCity());
       order.setLineItems(lineItemsSet);
       order.setOrder_date(new Date());
       order.setPin(getUser().getPin());
       order.setShipping_address(getUser().getAddress());
-      order.setStatus("PLACED");
+      order.setStatus(Constants.ORDER_STATUS_PLACED);
       order.setUser(getUser());
-      
-      shoppingCartService.saveNewOrder(order);
-      return null;
+      return order;
    }
 
    /**

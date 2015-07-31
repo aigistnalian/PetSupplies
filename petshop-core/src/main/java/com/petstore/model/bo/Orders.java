@@ -5,7 +5,7 @@ package com.petstore.model.bo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,9 +18,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 /**
  * Order table to track the user orders
@@ -44,12 +41,6 @@ public class Orders implements Serializable
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-	/**
-	 * Order ID
-	 */
-	@Column(name="ORDER_ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private String order_id;
 	/**
 	 * user id
 	 */
@@ -84,14 +75,13 @@ public class Orders implements Serializable
 	/**
     * order.
     */
-   @ManyToOne
+   @ManyToOne(cascade=CascadeType.ALL)
    @JoinColumn( referencedColumnName="ID",name="user_id",
             insertable=false,updatable=false)
    private User user;
 
    @OneToMany(cascade=CascadeType.ALL, mappedBy="order",fetch=FetchType.EAGER)
-   @OnDelete(action = OnDeleteAction.CASCADE)
-    private Set<LineItem> lineItems;
+    private List<LineItem> lineItems;
 
 	/**
 	 * *@return Getter for the id
@@ -109,21 +99,6 @@ public class Orders implements Serializable
 		this.id = id;
 	}
 
-	/**
-	 * *@return Getter for the order_id
-	 */
-	public String getOrder_id() 
-	{
-		return order_id;
-	}
-
-	/**
-	 * @param order_id the order_id to set
-	 */
-	public void setOrder_id(String order_id) 
-	{
-		this.order_id = order_id;
-	}
 
 	/**
 	 * *@return Getter for the user_id
@@ -244,9 +219,9 @@ public class Orders implements Serializable
    /**
     * Get the lineItems.
     *
-    * @return Returns the lineItems as a Set<LineItem>.
+    * @return Returns the lineItems as a List<LineItem>.
     */
-   public Set<LineItem> getLineItems()
+   public List<LineItem> getLineItems()
    {
       return lineItems;
    }
@@ -256,10 +231,11 @@ public class Orders implements Serializable
     *
     * @param lineItems The lineItems to set.
     */
-   public void setLineItems(Set<LineItem> lineItems)
+   public void setLineItems(List<LineItem> lineItems)
    {
       this.lineItems = lineItems;
    }
+
 	
 	
 }

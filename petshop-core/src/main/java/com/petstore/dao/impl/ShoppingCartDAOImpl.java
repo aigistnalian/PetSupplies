@@ -17,11 +17,12 @@ import javax.transaction.Transactional;
 import com.petstore.dao.AbstractDAO;
 import com.petstore.dao.ShoppingCartDAO;
 import com.petstore.model.bo.Orders;
+import com.petstore.model.bo.User;
 
 /**
  * 
  *
- * @version $Id:$
+ * @version 1.0
  * @author analian (c) Jul 29, 2015, Sogeti B.V.
  */
 public class ShoppingCartDAOImpl extends AbstractDAO<Integer, Orders>  implements ShoppingCartDAO
@@ -31,6 +32,13 @@ public class ShoppingCartDAOImpl extends AbstractDAO<Integer, Orders>  implement
    @Transactional
    public void saveShoppingOrder(Orders order)
    {
+     User user =  entityManager.find(User.class, order.getUser().getUser_id());
+     
+     if(user!=null)
+     {
+        order.setUser(user);
+        order.setUser_id(user.getUser_id());
+     }
       entityManager.persist(order);
    }
 

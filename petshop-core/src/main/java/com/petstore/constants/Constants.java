@@ -51,6 +51,8 @@ public final class Constants
 	
 	public static final String LANDING_PAGE_STRING = "landing";
 	
+	public static final String ORDER_CONFIRMATION_PAGE_STRING = "orderConfirmation";
+	
 	public static final String LOGIN_PAGE_STRING = "login";
 	
 	public static final String BROWSE_PRODUCTS_STRING = "browseProducts";
@@ -62,5 +64,7 @@ public final class Constants
 	public static final String LOGIN_REDIRECT_STRING = "/login?faces-redirect=true" ;
 	
    public static final String ORDER_PAGE_STRING = "orders";
+   
+   public static final String ORDER_STATUS_PLACED = "PLACED";
 	
 }
