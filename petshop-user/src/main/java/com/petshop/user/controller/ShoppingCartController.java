@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
@@ -128,9 +130,21 @@ public class ShoppingCartController implements Serializable
       Map<Integer, ShoppingCartForm> cart = bean.getCart();
       List<LineItem> lineItemsSet = new ArrayList<LineItem>();
       
-      Orders order = createNewOrderObject(cart, lineItemsSet);
-      shoppingCartService.saveNewOrder(order);
-      return null;
+      try
+      {
+         Orders order = createNewOrderObject(cart, lineItemsSet);
+         shoppingCartService.saveNewOrder(order);
+      }
+      catch (Exception e)
+      {
+         FacesMessage msg = new FacesMessage("Error occurred while placing Order...", "Please Try Again Later!");
+         FacesContext.getCurrentInstance().addMessage(null, msg);
+         return null;
+      }
+      
+      FacesMessage msg = new FacesMessage("Thank You for placing Order...", "Please Visit Again Later!");
+      FacesContext.getCurrentInstance().addMessage(null, msg);
+      return "thankYouPage";
    }
 
    /**

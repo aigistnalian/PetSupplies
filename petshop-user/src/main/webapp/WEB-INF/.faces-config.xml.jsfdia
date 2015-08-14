@@ -54,5 +54,14 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#order#orderConfirmation.xhtml"
-  PATH="/order/orderConfirmation.xhtml" SHAPE="448,353,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/order/orderConfirmation.xhtml" SHAPE="448,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#order#orderConfirmation.xhtml:0" NAME="item"
+   PATH="/order/orderConfirmation.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="thankYouPage::#order#thankYou.xhtml"
+    NAME="output" PATH="/order/thankYou.xhtml"
+    TARGET="rules:#order#thankYou.xhtml" TITLE="thankYouPage" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#order#thankYou.xhtml"
+  PATH="/order/thankYou.xhtml" SHAPE="656,369,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

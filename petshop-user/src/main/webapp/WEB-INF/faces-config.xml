@@ -42,6 +42,14 @@
 		</navigation-case>
 	</navigation-rule>
 
+<navigation-rule>
+		<from-view-id>/order/orderConfirmation.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>thankYouPage</from-outcome>
+			<to-view-id>/order/thankYou.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 
 	<navigation-rule>
 		<from-view-id>/login.xhtml</from-view-id>
